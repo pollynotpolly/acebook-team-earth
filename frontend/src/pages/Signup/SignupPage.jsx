@@ -73,14 +73,11 @@ export const SignupPage = () => {
           value={password}
           onChange={handlePasswordChange}
         />
-        <input role="submit-button" id="submit" type="submit" value="Submit" onClick={myFunction} />
+        <input role="submit-button" id="submit" type="submit" value="Submit"  />
         
         </form>
         
       </>
     );
   };
-  function myFunction() {
-              
-    alert("Your account was successfully created")
-  }
+  
