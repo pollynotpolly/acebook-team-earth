@@ -3,7 +3,7 @@
   text-align: center;
 }
 
-/* New styles for the navbar */
+/* basic styles for the navbar */
 nav {
   background-color: #333;
   padding: 10px 0;
@@ -30,6 +30,23 @@ nav ul li a {
 nav ul li a:hover {
   color: #ddd;
 }
+
+/* styling to make logout button look the same as the navbar  */
+
+nav ul li button {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 0;
+}
+
+nav ul li button:hover {
+  color: #ddd;
+}
+
+
 
 /* Ensure content is below the navbar */
 .content {
