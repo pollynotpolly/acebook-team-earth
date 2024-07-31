@@ -1,5 +1,5 @@
 // Creating the template/'box'/area where the user will be able to create and send their post to the feed
-import "src/components/PostButton.css";
+// import "src/components/PostButton.css";
 
 function PostButton(){
   // Button to say that you've clicked it - to be removed later?
