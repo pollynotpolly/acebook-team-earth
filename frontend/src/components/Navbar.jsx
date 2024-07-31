@@ -22,6 +22,7 @@ export const Navbar = () => {
         <ul>
         <li><Link to="/">Home</Link></li>
         <li><Link to="/posts">Feed</Link></li>
+        <li><Link to="/my-profile">Profile</Link></li>
 
 {/* Conditional rendering belwo based on login status using ternary operator - same as if else statements */}
 
