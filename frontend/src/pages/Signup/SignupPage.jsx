@@ -73,8 +73,11 @@ export const SignupPage = () => {
           value={password}
           onChange={handlePasswordChange}
         />
-        <input role="submit-button" id="submit" type="submit" value="Submit" />
-      </form>
-    </>
-  );
-};
+        <input role="submit-button" id="submit" type="submit" value="Submit"  />
+        
+        </form>
+        
+      </>
+    );
+  };
+  
