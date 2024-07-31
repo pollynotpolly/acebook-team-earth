@@ -1,78 +1,39 @@
 const User = require("../models/user");
-
+const {generateToken} = require("../lib/token");
 // todo: add token checks?
 
-const create = async (req, res) => {
-  try {
-    const name = req.body.name;
-    const email = req.body.email;
-    const password = req.body.password;
-    const user = new User({ email, password, name, about: "" });
+const getUser = async (req, res) => {
+    const token = generateToken(req.user_id);
+    const user = await User.findById(req.user_id);
+    console.log('user: ' ,user);
+    res.status(200).json({user: user, token: token});
 
-    await user.save();
-    console.log("User created, id:", user._id.toString());
-    res.status(201).json({ message: "OK" });
-  } catch (err) {
-    console.error(err);
-    res.status(400).json({ message: "Something went wrong" });
-  }
 };
 
-const getAll = async (req, res) => {
-  try {
-    const users = await User.find({});
-    res.status(200).json({message: 'OK', users: users});
-  } catch (err) {
-    console.error(err);
-    res.status(400).json({ message: "Something went wrong" });
-  }
+const updateUser = async (req, res) => {
+    const token = generateToken(req.user_id);
+    const user = await User.findByIdAndUpdate(req.user_id, req.body)
+    res.status(200).json({user: user, token: token});
 }
 
-
-const get = async (req, res) => {
-  try {
-    const user = await User.findById(req.params.id);
-    res.status(200).json({message: 'OK', user: user});
-  } catch (err) {
-    console.error(err);
-    res.status(400).json({ message: "Something went wrong" });
-  }
+const deleteUser = async (req, res) => {
+    const token = generateToken(req.user_id);
+    await User.findByIdAndDelete(req.user_id);
+    res.status(204).json({message: "User deleted", token: token});
 }
 
-const update = async (req, res) => {
-  try {
-    const user = await User.findById(req.params.id);
-    user.email = req.body.email;
-    user.password = req.body.password;
-    user.about = req.body.about;
-    user.name = req.body.name;
+const createUser = async (req, res) => {
+    const token = generateToken(req.user_id);
+    const user = new User(req.body);
     await user.save();
-    console.log('User updated, id:', user._id.toString());
-    res.status(200).json({message: 'OK'});
-  } catch (error) {
-    console.error(err);
-    res.status(400).json({ message: "Something went wrong" });
-  }
+    res.status(201).json({user: user, token: token});
 }
 
-const remove = async (req, res) => {
-  try {
-    const user = await User.findById(req.params.id);
-    await user.delete();
-    console.log('User deleted, id:', user._id.toString());
-    res.status(200).json({message: 'OK'});
-  } catch (error) {
-    console.error(err);
-    res.status(400).json({ message: "Something went wrong" });
-  }
-}
-
-const UsersController = {
-  create: create,
-  get: get,
-  update: update,
-  delete: remove,
-  getAll : getAll
+const userController = {
+    getUser: getUser,
+    updateUser: updateUser,
+    deleteUser: deleteUser,
+    createUser: createUser,
 };
 
-module.exports = UsersController;
+module.exports = userController;
