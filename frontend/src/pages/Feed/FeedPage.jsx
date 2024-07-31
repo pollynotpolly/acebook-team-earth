@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { getPosts } from "../../services/posts";
+import { getPosts, createPost } from "../../services/posts";
 import Post from "../../components/Post/Post";
 import PostButton from "../../components/Input/PostButton";
 
@@ -30,6 +30,12 @@ export const FeedPage = () => {
     return;
   }
 
+  // const handleCreatePost = async () => {
+  //   if (token) {
+
+  //   }
+  // }
+
   return (
     <>
       <h2>Posts!</h2>
@@ -39,6 +45,9 @@ export const FeedPage = () => {
           
         ))}
         <PostButton />
+      <div>
+        id=test 
+      </div>
       </div>
     </>
   );

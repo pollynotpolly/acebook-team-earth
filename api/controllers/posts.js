@@ -8,11 +8,20 @@ const getAllPosts = async (req, res) => {
 };
 
 const createPost = async (req, res) => {
-  const post = new Post(req.body);
-  post.save();
-
+  console.log(req.body);
+  const post = new Post({message: req.body.content }); //new Post({ message: `Test message, created at ${dateTimeString}` }).save();
+  post
+    .save()
+    .then((post) => {
+      console.log("Post created, id:", post);
+      res.status(201).json({ message: "OK" });
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(400).json({ message: "Something went wrong" });
+    });
   const newToken = generateToken(req.user_id);
-  res.status(201).json({ message: "Post created", token: newToken });
+
 };
 
 const PostsController = {

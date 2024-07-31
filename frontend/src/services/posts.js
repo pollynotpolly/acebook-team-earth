@@ -23,13 +23,13 @@ export const getPosts = async (token) => {
 //KR: I created the below with  Kim, I need to now connect it to the FeedPage.jsx file, that is why 
 // createPost says it hasn't been called. This code is to create a new post on the feed page (as of now we 
 // have the code for the backend, but we need to link it to the front it, which is what the below code is doing)   
-const createPost = async (token) => {    //creating a new function -line 26 & lines 27-41 is body of this function
+export const createPost = async (token, content) => {    //creating a new function -line 26 & lines 27-41 is body of this function
   const newPost = {
     method: "POST",
     headers: {
       Authorization: `Bearer ${token}`,
     },
-    body: "Our 1st post!"
+    body: JSON.stringify({ content: content})
   };
 
   const response = await fetch(`${BACKEND_URL}/posts`, newPost);
@@ -38,4 +38,9 @@ const createPost = async (token) => {    //creating a new function -line 26 & li
     throw new Error("Unable to create posts");
   }
 
+  const data = await response.json();
+  return data;
 };
+
+
+
