@@ -4,14 +4,15 @@ import { useNavigate } from "react-router-dom";
 import { signup } from "../../services/authentication";
 
 export const SignupPage = () => {
-  const [email, setEmail] = useState("");
+  const [email, setEmail,] = useState("");
+  const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      await signup(email, password);
+      await signup(name, email, password);
       console.log("redirecting...:");
       navigate("/login");
     } catch (err) {
@@ -28,10 +29,22 @@ export const SignupPage = () => {
     setPassword(event.target.value);
   };
 
+  const handleNameChange = (event) => {
+    setName(event.target.value);
+  }
+
   return (
     <>
       <h2>Signup</h2>
       <form onSubmit={handleSubmit}>
+        <label htmlFor="name">Name:</label>
+        <input
+          id="name"
+          type="text"
+          value={name}
+          onChange={handleNameChange}
+          />
+
         <label htmlFor="email">Email:</label>
         <input
           id="email"

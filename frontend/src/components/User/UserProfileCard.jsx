@@ -5,6 +5,7 @@ import React from 'react';
 
 
 export const UserProfileCard = ({ user }) => {
+    console.log('user', user);
     return (
         <div className='user-profile-card'>
             <div className='image placeholder'>This will be where the image is
