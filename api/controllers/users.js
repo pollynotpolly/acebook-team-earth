@@ -23,11 +23,12 @@ const deleteUser = async (req, res) => {
 }
 
 const createUser = async (req, res) => {
-    const token = generateToken(req.user_id);
+    console.log('req.body: ', req.body);
     const user = new User(req.body);
     await user.save();
-    res.status(201).json({user: user, token: token});
-}
+    console.log('user: ', user);
+    res.status(201).json({user: user});
+};
 
 const userController = {
     getUser: getUser,

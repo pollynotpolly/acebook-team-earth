@@ -9,7 +9,7 @@ export const getUserInfo = async (token) => {
     },
   };
   console.log("token, ", token);
-  const response = await fetch(`${BACKEND_URL}/users`, requestOptions);
+  const response = await fetch(`${BACKEND_URL}/profiles`, requestOptions);
   if (response.status !== 200) {
     throw new Error("Unable to fetch user");
   }
@@ -27,7 +27,7 @@ export const updateUserInfo = async  (data) => {
     body: JSON.stringify(data),
   };
 
-  const response = await fetch(`${BACKEND_URL}/users`, requestOptions);
+  const response = await fetch(`${BACKEND_URL}/profiles`, requestOptions);
 
   if (response.status !== 200) {
     throw new Error("Unable to update user");
@@ -44,7 +44,7 @@ export const deleteUser = async () => {
       Authorization: `Bearer ${token}`,
     },
   };
-  const response = await fetch(`${BACKEND_URL}/users`, requestOptions);
+  const response = await fetch(`${BACKEND_URL}/profiles`, requestOptions);
 
   if (response.status !== 204) {
     throw new Error("Unable to delete user");
