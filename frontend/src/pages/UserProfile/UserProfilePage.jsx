@@ -2,11 +2,12 @@
 
 
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 import { getUserInfo } from "../../services/userInfos";
 import { UserProfileCard } from "../../components/User/UserProfileCard";
 import { FeedPage } from "../Feed/FeedPage";
-import { useNavigate } from "react-router-dom";
+
 
 
 
@@ -15,10 +16,13 @@ export const UserProfilePage = () => {
     const navigate = useNavigate();
     
     useEffect(() => {
+        const token = localStorage.getItem("token");
         const fetchUser = async () => {
+            console.log("fetching user");
         try {
-            const userInfo = await getUserInfo();
-            setUserInfo(userInfo);
+            const userInfo = await getUserInfo(token);
+            console.log("userInfo: ", userInfo.user);
+            setUserInfo(userInfo.user);
         } catch (err) {
             console.error(err);
             navigate("/404");
@@ -26,7 +30,7 @@ export const UserProfilePage = () => {
         };
     
         fetchUser();
-    }, [id, navigate]);
+    }, [navigate]);
     
     return (
         <>
