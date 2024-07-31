@@ -12,6 +12,7 @@ export const Navbar = () => {
     }, []);
 // updated nabvar using button component
     return (
+
         <nav className="top-navbar">
             <ul>
                 <li><Link to="/">Home</Link></li>
@@ -29,5 +30,6 @@ export const Navbar = () => {
                 )}
             </ul>
         </nav>
+
     );
 };
