@@ -6,13 +6,14 @@ import { signup } from "../../services/authentication";
 export const SignupPage = () => {
   const [email, setEmail,] = useState("");
   const [name, setName] = useState("");
+  const [surname, setSurname] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      await signup(name, email, password);
+      await signup(name, surname, email, password);
       console.log("redirecting...:");
       navigate("/login");
     } catch (err) {
@@ -33,6 +34,10 @@ export const SignupPage = () => {
     setName(event.target.value);
   }
 
+  const handleSurnameChange = (event) => {
+    setSurname(event.target.value);
+  }
+
   return (
     <>
       <h2>Signup</h2>
@@ -43,6 +48,14 @@ export const SignupPage = () => {
           type="text"
           value={name}
           onChange={handleNameChange}
+          />
+
+        <label htmlFor="surname">Surname:</label>
+        <input
+          id="surname"
+          type="text"
+          value={surname}
+          onChange={handleSurnameChange}
           />
 
         <label htmlFor="email">Email:</label>
