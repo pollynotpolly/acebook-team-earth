@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-
+// updated button component
 export const LogoutButton = ({ setIsLoggedIn }) => {
     const navigate = useNavigate();
 

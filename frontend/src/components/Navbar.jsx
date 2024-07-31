@@ -10,7 +10,7 @@ export const Navbar = () => {
         const token = localStorage.getItem("token");    // Check if there's a token in localStorage
         setIsLoggedIn(!!token);   // Set isLoggedIn to true if token exists, false otherwise
     }, []);
-
+// updated nabvar using button component
     return (
         <nav className="top-navbar">
             <ul>
