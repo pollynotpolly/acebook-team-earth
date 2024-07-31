@@ -31,7 +31,7 @@ function PostButton(){
 const UploadPost = (event) =>{
   event.target.value
   //appendchld to page in the form of a post????
-  <div></div>
+
 
 };
 export default PostButton;
