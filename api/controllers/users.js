@@ -1,24 +1,40 @@
 const User = require("../models/user");
+const {generateToken} = require("../lib/token");
+// todo: add token checks?
 
-const create = (req, res) => {
-  const email = req.body.email;
-  const password = req.body.password;
+const getUser = async (req, res) => {
+    const token = generateToken(req.user_id);
+    const user = await User.findById(req.user_id);
+    console.log('user: ' ,user);
+    res.status(200).json({user: user, token: token});
 
-  const user = new User({ email, password });
-  user
-    .save()
-    .then((user) => {
-      console.log("User created, id:", user._id.toString());
-      res.status(201).json({ message: "OK" });
-    })
-    .catch((err) => {
-      console.error(err);
-      res.status(400).json({ message: "Something went wrong" });
-    });
 };
 
-const UsersController = {
-  create: create,
+const updateUser = async (req, res) => {
+    const token = generateToken(req.user_id);
+    const user = await User.findByIdAndUpdate(req.user_id, req.body)
+    res.status(200).json({user: user, token: token});
+}
+
+const deleteUser = async (req, res) => {
+    const token = generateToken(req.user_id);
+    await User.findByIdAndDelete(req.user_id);
+    res.status(204).json({message: "User deleted", token: token});
+}
+
+const createUser = async (req, res) => {
+    console.log('req.body: ', req.body);
+    const user = new User(req.body);
+    await user.save();
+    console.log('user: ', user);
+    res.status(201).json({user: user});
 };
 
-module.exports = UsersController;
+const userController = {
+    getUser: getUser,
+    updateUser: updateUser,
+    deleteUser: deleteUser,
+    createUser: createUser,
+};
+
+module.exports = userController;

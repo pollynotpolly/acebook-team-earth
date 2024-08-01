@@ -7,6 +7,7 @@ export const login = async (email, password) => {
     password: password,
   };
 
+  console.log("payload, ", payload);
   const requestOptions = {
     method: "POST",
     headers: {
@@ -16,6 +17,7 @@ export const login = async (email, password) => {
   };
 
   const response = await fetch(`${BACKEND_URL}/tokens`, requestOptions);
+  console.log("response, ", response);
 
   // docs: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/201
   if (response.status === 201) {
@@ -28,8 +30,10 @@ export const login = async (email, password) => {
   }
 };
 
-export const signup = async (email, password) => {
+export const signup = async (name, surname, email, password) => {
   const payload = {
+    name:  name,
+    surname: surname,
     email: email,
     password: password,
   };
@@ -46,6 +50,7 @@ export const signup = async (email, password) => {
 
   // docs: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/201
   if (response.status === 201) {
+    alert("Your account was successfully created")
     return;
   } else {
     throw new Error(
