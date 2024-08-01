@@ -58,7 +58,7 @@
     margin-top: 20px;
     text-align: center;
     font-family: "Poppins", Verdana, sans-serif;
-    background: #3ba626;
+    background: #42b72a;
     color: white;
     border: none;
     border-radius: 4px;
@@ -67,7 +67,7 @@
 }
 
 .submit-button:hover {
-    background: #1877f2;
+    background: #3ba626;
 }
 
 .team-roll-call{

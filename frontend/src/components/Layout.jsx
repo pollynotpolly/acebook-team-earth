@@ -1,7 +1,8 @@
-// src/components/Layout.jsx
+
 import { useState, useEffect } from "react";
 import { Outlet } from "react-router-dom";
 import { Navbar } from "./Navbar";
+import { Footer } from "./Footer";
 
 export const Layout = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -17,6 +18,7 @@ export const Layout = () => {
         <div className="content">
         <Outlet />
         </div>
+        <Footer/>
     </>
     );
 };
