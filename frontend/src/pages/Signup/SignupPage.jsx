@@ -40,7 +40,7 @@ export const SignupPage = () => {
 
   return (
     <div className="signup-container">
-      <h2 className="signup-title">Signup</h2>
+      <h2 className="signup-title">&#127758; Signup</h2>
       <form className="signup-form" onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="name" className="form-label">Name:</label>
@@ -95,6 +95,10 @@ export const SignupPage = () => {
           value="Submit"  
         />
       </form>
+      <footer>
+      <p className="team-roll-call">team earth &#127758; Joey &#127759; Karla &#127757; Robert &#127758; Glory &#127759; George &#127757; Polly &#127758; John
+      </p>
+    </footer>
     </div>
   );
 };

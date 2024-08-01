@@ -10,3 +10,15 @@
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
 }
+
+
+.team-roll-call{
+  font-family: "Poppins";
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color:#f0f2f5;
+  color: black;
+  text-align: center;
+}
