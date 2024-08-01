@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import { getPosts } from "../../services/posts";
 import Post from "../../components/Post/Post";
-import PostButton from "../../components/Input/PostButton";
+import CreatePostForm from "../../components/Input/CreatePostForm";
 
 export const FeedPage = () => {
   const [posts, setPosts] = useState([]);
@@ -38,7 +38,7 @@ export const FeedPage = () => {
           <Post post={post} key={post._id} />
           
         ))}
-        <PostButton />
+        <CreatePostForm />
       </div>
     </>
   );

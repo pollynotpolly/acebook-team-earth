@@ -1,11 +1,11 @@
 
 // Template where the user will be able to type/create & send their post to the feed
+
 import { useState } from "react";
 import { createPost } from "../../services/posts";
-import "./PostButton.css";
+import "./CreatePostForm.css";
 
-
-function PostButton(){
+function CreatePostForm(){
   const [userInput, setuserInput] = useState("");
   console.log(userInput);
 
@@ -32,4 +32,4 @@ function PostButton(){
       </>
     );  
 }
-export default PostButton;
+export default CreatePostForm;
