@@ -5,6 +5,7 @@ import { HomePage } from "./pages/Home/HomePage";
 import { LoginPage } from "./pages/Login/LoginPage";
 import { SignupPage } from "./pages/Signup/SignupPage";
 import { FeedPage } from "./pages/Feed/FeedPage";
+import { UserProfilePage } from "./pages/UserProfile/UserProfilePage";
 import { Layout } from "./components/Layout";
 
 
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
       },
     ],
   },
+  {
+    path: '/my-profile',
+    element: <UserProfilePage />,
+  }
 ]);
 
 const App = () => {

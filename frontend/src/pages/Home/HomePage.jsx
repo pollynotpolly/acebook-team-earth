@@ -5,9 +5,9 @@ import "./HomePage.css";
 export const HomePage = () => {
   return (
     <div className="home">
-      <h1>Welcome to Acebook!</h1>
-      <Link to="/signup">Sign Up</Link>
-      <Link to="/login">Log In</Link>
+      <h1>Welcome to Earthbook!</h1>
+      <h1> &#127758; &#127759; &#127757;</h1>
+    
     </div>
   );
 };

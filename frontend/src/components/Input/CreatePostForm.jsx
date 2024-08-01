@@ -1,5 +1,6 @@
+
 // Template where the user will be able to type/create & send their post to the feed
-//import "src/components/CreatePostForm.css";
+
 import { useState } from "react";
 import { createPost } from "../../services/posts";
 import "./CreatePostForm.css";
