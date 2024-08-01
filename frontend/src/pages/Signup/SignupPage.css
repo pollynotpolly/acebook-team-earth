@@ -1,0 +1,48 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+.signup-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.signup-title {
+    color: #1877f2;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.signup-form {
+    background: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+}
+
+.form-group {
+    display: inline-flex;
+    flex-direction: column;
+}
+
+.form-label {
+    font: Helvetica Neue, Verdana, sans-serif;
+}
+
+.form-input {
+    font: Helvetica Neue, Verdana, sans-serif;
+}
+
+.submit-button {
+    margin-top: 25px;
+    text-align: center;
+    background: #3ba626;
+    margin-bottom: 20px;
+}
+
+.submit-button:hover {
+    background: #1877f2;
+}
+

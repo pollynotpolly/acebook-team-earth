@@ -8,7 +8,6 @@ import { FeedPage } from "./pages/Feed/FeedPage";
 import { UserProfilePage } from "./pages/UserProfile/UserProfilePage";
 import { Layout } from "./components/Layout";
 
-
 // docs: https://reactrouter.com/en/main/start/overview
 const router = createBrowserRouter([
   {
@@ -31,12 +30,12 @@ const router = createBrowserRouter([
         path: "/posts",
         element: <FeedPage />,
       },
+      {
+        path: "/my-profile",
+        element: <UserProfilePage />,
+      },
     ],
   },
-  {
-    path: '/my-profile',
-    element: <UserProfilePage />,
-  }
 ]);
 
 const App = () => {
