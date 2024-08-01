@@ -9,7 +9,7 @@ const getAllPosts = async (req, res) => {
 
 const createPost = async (req, res) => {
   console.log(req.body);
-  const post = new Post({message: req.body.content }); //new Post({ message: `Test message, created at ${dateTimeString}` }).save();
+  const post = new Post({message: req.body.content }); 
   post
     .save()
     .then((post) => {
