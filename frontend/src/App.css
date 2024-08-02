@@ -1,6 +1,14 @@
 #root {
-  margin: 0 auto;
-  text-align: center;
+  position:fixed;
+  margin: 0;
+  padding: 0;
+  top:0;
+  left:0;
+
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
 }
 
 /* basic styles for the navbar */
@@ -50,7 +58,21 @@ nav ul li button:hover {
 
 /* Ensure content is below the navbar */
 .content {
-  margin-top: 20px;
+  margin-top: 0px;
+  background: #f0f2f5;
+  width: 100%;
+  height: 100%;
+}
+
+.team-roll-call{
+  font-family: "Poppins";
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color:#f0f2f5;
+  color: black;
+  text-align: center;
 }
 
 .user-profile-card {

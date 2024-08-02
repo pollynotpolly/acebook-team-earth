@@ -1,16 +1,24 @@
+
+import { useState, useEffect } from "react";
 import { Outlet } from "react-router-dom";
 import { Navbar } from "./Navbar";
-
-// created a Layout component that includes the Navbar and an Outlet component from react-router-dom. 
-// The Outlet is where child routes will be rendered.
+import { Footer } from "./Footer";
 
 export const Layout = () => {
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+    useEffect(() => {
+    const token = localStorage.getItem("token");
+    setIsLoggedIn(!!token);
+    }, []);
+
     return (
     <>
-        <Navbar />
+        {isLoggedIn && <Navbar />}
         <div className="content">
-            <Outlet />
+        <Outlet />
         </div>
+        <Footer/>
     </>
     );
 };
