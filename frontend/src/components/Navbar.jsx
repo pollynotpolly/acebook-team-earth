@@ -14,7 +14,7 @@ export const Navbar = () => {
     return (
     <nav className="top-navbar">
         <ul>
-            <li><Link to="/">Home</Link></li>
+            
             <li><Link to="/posts">Feed</Link></li>
             <li><Link to="/my-profile">Profile</Link></li>
 
@@ -29,5 +29,5 @@ export const Navbar = () => {
         )}
         </ul>
     </nav>
-   )}
+    )}
 };
