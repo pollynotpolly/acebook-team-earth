@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-import { login } from "../../services/authentication";
+import { login } from "../services/authentication";
 
-export const LoginPage = () => {
+export const LoginComponent = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
@@ -30,6 +31,7 @@ export const LoginPage = () => {
 
   return (
     <>
+    <div className="login-form">
       <h2>Login</h2>
       <form onSubmit={handleSubmit}>
         <label htmlFor="email">Email:</label>
@@ -46,8 +48,14 @@ export const LoginPage = () => {
           value={password}
           onChange={handlePasswordChange}
         />
-        <input role="submit-button" id="submit" type="submit" value="Submit" />
+        <div className="login">
+        <input role="submit-button" id="submit" type="submit" value="Login" />
+        </div>
+        <div className="button">
+        <Link to="/signup">Create new account</Link>
+        </div>
       </form>
+      </div>
     </>
   );
 };

@@ -1,13 +1,11 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-
 import "./App.css";
 import { HomePage } from "./pages/Home/HomePage";
-import { LoginPage } from "./pages/Login/LoginPage";
+import { LoginPage } from "./components/Login-component";
 import { SignupPage } from "./pages/Signup/SignupPage";
 import { FeedPage } from "./pages/Feed/FeedPage";
 import { UserProfilePage } from "./pages/UserProfile/UserProfilePage";
 import { Layout } from "./components/Layout";
-
 
 // docs: https://reactrouter.com/en/main/start/overview
 const router = createBrowserRouter([
@@ -31,12 +29,12 @@ const router = createBrowserRouter([
         path: "/posts",
         element: <FeedPage />,
       },
+      {
+        path: "/my-profile",
+        element: <UserProfilePage />,
+      },
     ],
   },
-  {
-    path: '/my-profile',
-    element: <UserProfilePage />,
-  }
 ]);
 
 const App = () => {
