@@ -3,6 +3,7 @@ import { LogoutButton } from "./LogoutButton";
 
 export const Navbar = ({ setIsLoggedIn }) => {
     return (
+
         <nav className="navbar">
             <h1>earthbook!</h1>
             <ul>
