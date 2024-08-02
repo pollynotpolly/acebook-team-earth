@@ -17,7 +17,9 @@ export const getUserInfo = async (token) => {
   return data;
 };
 
-export const updateUserInfo = async  (data) => {
+export const updateUserInfo = async  (token,data) => {
+  console.log("data: ", data);
+  console.log("token: ", token);  
   const requestOptions = {
     method: "PUT",
     headers: {
