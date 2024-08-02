@@ -53,3 +53,6 @@ nav ul li button:hover {
   margin-top: 20px;
 }
 
+.user-profile-card {
+  border: solid 1px #ddd;
+}
