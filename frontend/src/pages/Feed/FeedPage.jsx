@@ -32,13 +32,12 @@ export const FeedPage = () => {
 
   return (
     <>
-      <h2>Posts!</h2>
+      <CreatePostForm />
       <div className="feed" role="feed">
         {posts.map((post) => (
           <Post post={post} key={post._id} />
           
         ))}
-        <CreatePostForm />
       </div>
     </>
   );
