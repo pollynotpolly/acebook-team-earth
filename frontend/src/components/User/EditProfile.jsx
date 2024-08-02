@@ -42,6 +42,9 @@ export const EditProfile =(props) => {
     };
 
     return (
+        <div className="edit-profile-container">
+            <h2>&#127758; edit profile</h2>
+        <div className="edit-profile">
         <form onSubmit={handleSubmit}>
             <label>
                 Change Profile picture:
@@ -77,11 +80,13 @@ export const EditProfile =(props) => {
                     value={userAbout}
                     onChange={handleAbout}
                 />
-
             </label>
-            <button type="submit">Update</button>
-
+            <div className="button-container">
+            <button type="submit" className="button">Update</button>
+            
+            </div>
             </form>
+            </div>
+            </div>
     )
-
 }
