@@ -49,8 +49,8 @@
 .navbar ul li a,
 .navbar ul li button {
   font-family: "Poppins", Verdana, sans-serif;
-  color: #1877f2;
-  background-color: white;
+  color: white;
+  background-color: #1877f2;
   padding: 5px 15px;
   border-radius: 8px;
   display: inline-block;
@@ -63,8 +63,8 @@
 
 .navbar ul li a:hover,
 .navbar ul li button:hover {
-  background-color: #f0f2f5;
-  color: #1877f2;
+  background-color: #1877f2;
+  color: white;
 }
 
 
