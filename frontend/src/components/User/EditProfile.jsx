@@ -43,7 +43,7 @@ export const EditProfile =(props) => {
 
     return (
         <div className="edit-profile-container">
-            <h2>&#127758; edit profile</h2>
+            <h2>edit profile</h2>
         <div className="edit-profile">
         <form onSubmit={handleSubmit}>
             <label>

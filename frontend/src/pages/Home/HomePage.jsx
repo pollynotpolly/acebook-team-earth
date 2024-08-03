@@ -6,9 +6,9 @@ export const HomePage = () => {
   return (
     <div className="home">
       <div className="left-section">
-        <h1>earthbook!</h1>
+        <h1>earthbook</h1>
         <h2>&#127758; &#127759; &#127757;</h2>
-        <p>Connect with friends around the ....</p>
+        <p>connect with friends around the ....</p>
           <p>errmm ... globe!?</p>
       </div>
       <div className="right-section">    
