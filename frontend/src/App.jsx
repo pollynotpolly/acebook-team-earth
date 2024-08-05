@@ -34,12 +34,12 @@ const router = createBrowserRouter([
         path: "/my-profile",
         element: <UserProfilePage />,
       },
+      {
+        path: '/my-profile-settings',
+        element: <EditProfile  />,
+      },
     ],
   },
-  {
-    path: '/my-profile-settings',
-    element: <EditProfile  />,
-  }
 
 ]);
 
