@@ -12,7 +12,7 @@ export const UserProfileCard = ({ user }) => {
 
     return (
         <div className='user-profile-card'>
-            <div className='image placeholder'>This will be where the image is
+            <div className='image-placeholder'>This will be where the image is
                 {/* <img src={user.image} alt={user.name} /> */}
             </div>
         <h2>{user.name} {user.surname}</h2>

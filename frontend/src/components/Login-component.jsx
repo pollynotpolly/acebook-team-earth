@@ -52,7 +52,7 @@ export const LoginComponent = () => {
           <div className="login">
             <input role="submit-button" id="submit" type="submit" value="Login" />
           </div>
-          <div className="button">
+          <div className="signup">
             <Link to="/signup">Create new account</Link>
           </div>
         </form>
