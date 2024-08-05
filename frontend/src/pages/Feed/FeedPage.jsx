@@ -59,13 +59,16 @@ export const FeedPage = () => {
 
   return (
     <>
-      <CreatePostForm onCreatePost={handleCreatePost} />
-      <div className="feed" role="feed">
-        {posts.map((post) => (
-          <Post post={post} key={post._id} onDelete={handleDeletePost} time={dateTimeString} />
-          
-        ))}
+      <div className="create-post-container">
+        <CreatePostForm />
+      </div>
+      <div className="posts-container">
+        <div className="feed" role="feed">
+          {posts.map((post) => (
+            <Post post={post} key={post._id} />
+          ))}
+        </div>
       </div>
     </>
   );
-};
+}  
