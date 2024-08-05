@@ -49,9 +49,10 @@ export const UserProfilePage = () => {
                 </div>
                 </div>
             </div>
-            <div className="feed-container">
+            <div className="main-content">
                 <FeedPage />
             </div>
         </div>
+        
     );
 }    
