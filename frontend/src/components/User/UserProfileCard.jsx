@@ -1,11 +1,14 @@
 // This component is the card that displays the user's name, picture and about me info that we'd expect at the top of the user's profile.
 // Currently images wll not be implemented.
 
-import React from 'react';
+import React, { useEffect } from 'react';
+import { Link } from "react-router-dom";
+
+// import Link from 'react-router-dom';
 
 
 export const UserProfileCard = ({ user }) => {
-    console.log('user', user);
+
     return (
         <div className='user-profile-card'>
             <div className='image placeholder'>This will be where the image is
@@ -13,6 +16,10 @@ export const UserProfileCard = ({ user }) => {
             </div>
         <h2>{user.name} {user.surname}</h2>
         <p>{user.about}</p>
+        {/* edit link page.. <button> <Link /></button> */}
+        <Link to="/my-profile-settings/">Edit Profile</Link>
         </div>
     );
     }
+
+

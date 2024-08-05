@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { getUserInfo } from "../../services/userInfos";
 import { UserProfileCard } from "../../components/User/UserProfileCard";
 import { FeedPage } from "../Feed/FeedPage";
-
+import "./UserProfilePage.css";
 
 
 
