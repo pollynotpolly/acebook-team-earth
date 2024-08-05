@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
 #root {
   position:fixed;
   margin: 0;
@@ -12,48 +14,58 @@
 }
 
 /* basic styles for the navbar */
-nav {
-  background-color: #333;
+.navbar {
+  background-color: #1877f2;
   padding: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-nav ul {
+.navbar h1 {
+  font-family: "Poppins", Verdana, sans-serif;
+  color: #1877f2;
+  background-color: white;
+  padding: 5px 15px;
+  border-radius: 8px;
+  display: inline-block;
+  margin: 0 20px;
+  position:left
+}
+
+.navbar ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
+  flex-grow: 1;
 }
 
-nav ul li {
-  margin: 0 15px;
+.navbar ul li {
+  margin: 0 10px;
 }
 
-nav ul li a {
+.navbar ul li a,
+.navbar ul li button {
+  font-family: "Poppins", Verdana, sans-serif;
   color: white;
+  background-color: #1877f2;
+  padding: 5px 15px;
+  border-radius: 8px;
+  display: inline-block;
+  margin: 0;
   text-decoration: none;
-  font-size: 18px;
-}
-
-nav ul li a:hover {
-  color: #ddd;
-}
-
-/* styling to make logout button look the same as the navbar  */
-
-nav ul li button {
-  background: none;
   border: none;
-  color: white;
   cursor: pointer;
-  font-size: 18px;
-  padding: 0;
+  font-size: 16px;
 }
 
-nav ul li button:hover {
-  color: #ddd;
+.navbar ul li a:hover,
+.navbar ul li button:hover {
+  background-color: #1877f2;
+  color: white;
 }
-
 
 
 /* Ensure content is below the navbar */

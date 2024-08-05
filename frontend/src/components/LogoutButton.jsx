@@ -6,7 +6,7 @@ export const LogoutButton = ({ setIsLoggedIn }) => {
     const handleLogout = () => {
         localStorage.removeItem("token");   // Remove token from localStorage
         setIsLoggedIn(false);               // Update login status in parent component
-        navigate("/login");                 // Redirect user to login page
+        navigate("/");                 // Redirect user to login page
     };
 
     return (
