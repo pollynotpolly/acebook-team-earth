@@ -1,6 +1,4 @@
-
 // Template where the user will be able to type/create & send their post to the feed
-
 import { useState } from "react";
 import { createPost } from "../../services/posts";
 import "./CreatePostForm.css";
@@ -17,12 +15,13 @@ function CreatePostForm(){
     const token = localStorage.getItem("token");
     createPost(token, userInput);
     console.log(userInput);
+    window.location.reload(); //KR: Posts page reloads automatically after submitting 'post'w/out refreshing page.
   };
 
   const alertFunction = () => {
     let userResponse = prompt("How are you feeling today? 😀 Happy - 👌Okay - 😞Lousy");
     if(userResponse == "Happy"){
-    alert("🫶 That's the spirit! 🫶");
+    alert("That's the spirit! 🫶");
     } else if (userResponse == "Okay"){
     alert("Maybe a cup of coffee could help!? ☕");
     } else if (userResponse == "Lousy"){
