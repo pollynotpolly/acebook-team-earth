@@ -44,7 +44,7 @@ function CreatePostForm(){
             <div className="post-type"><i className="live-video-icon"></i> 🎥 Live Video</div>
             <div className="post-type"><i className="photo-video-icon"></i> 📷 Photo/Video</div>
             <div className="desktop-tablet-only">
-              <div onClick= {alertFunction} className="post-type"><i className="feeling-activity-icon"></i> 🙂 Felling/Activity</div>
+              <div onClick= {alertFunction} className="post-type"><i className="feeling-activity-icon"></i> 🙂 Feeling/Activity</div>
             </div>
           </div>
         </div>
