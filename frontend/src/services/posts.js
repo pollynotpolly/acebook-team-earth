@@ -22,6 +22,7 @@ export const getPosts = async (token) => {
 //formatting the user HTTP POST request to send it to the API:
 export const createPost = async (token, content) => {   
   const dateTimeString = new Date().toLocaleString("en-GB"); 
+  console.log("date time string " + dateTimeString);
   const payload = {
     content: content + `Post created at ${dateTimeString}`
   }

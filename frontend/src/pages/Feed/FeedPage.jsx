@@ -14,7 +14,8 @@ export const FeedPage = () => {
     if (token) {
       getPosts(token)
         .then((data) => {
-          setPosts(data.posts);
+          const unorderedPosts = data.posts;  //KR: added lines 18-19 to 'reverse' the order of the posts - 
+          setPosts(unorderedPosts.reverse());  // now newest shows 1st!
           localStorage.setItem("token", data.token);
         })
         .catch((err) => {
@@ -32,13 +33,12 @@ export const FeedPage = () => {
 
   return (
     <>
-      <h2>Posts!</h2>
+      <CreatePostForm />
       <div className="feed" role="feed">
         {posts.map((post) => (
           <Post post={post} key={post._id} />
           
         ))}
-        <CreatePostForm />
       </div>
     </>
   );
