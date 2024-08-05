@@ -86,29 +86,59 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    overflow-y: auto; /* Enable vertical scrolling */
 }
 
 .image-grid {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
+    width: 100%; /* Ensure the grid takes the full width */
 }
 
 .image-grid img {
     flex: 0 0 calc(50% - 10px); /* Adjust for desired number of columns */
-    width: 150px; /* Fixed width */
-    height: 150px; /* Fixed height */
+    width: 150px; 
+    height: 150px; 
     object-fit: cover;
     object-position: center;
 }
 
-.feed-container {
-    flex-grow: 1;
-    background-color: #fff;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
+.main-content {
+    display: flex;
+    flex-direction: column;
+    width: calc(100% - 470px); /* Adjust width to fill remaining space */
 }
+
+.create-post-container {
+    width: 100%;
+    max-width: 900px; /* Adjust as needed */
+    margin: 20px auto; /* Center the container horizontally with vertical margin */
+    padding: 20px;
+    background-color: #fff; /* White background */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+    box-sizing: border-box; /* Include padding in width calculation */
+}
+
+.posts-container {
+    width: 100%;
+    max-width: 900px; /* Adjust as needed */
+    margin: 20px auto; /* Center the container horizontally with vertical margin */
+    padding: 20px;
+    background-color: #fff; 
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+    box-sizing: border-box; /* Include padding in width calculation */
+}
+
+.feed {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Space between posts */
+}
+
+
 
 .edit-profile-container {
     display: flex;
