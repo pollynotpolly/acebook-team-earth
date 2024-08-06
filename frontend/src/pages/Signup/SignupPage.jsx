@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import "./SignupPage.css";
 import { signup } from "../../services/authentication";
 
 export const SignupPage = () => {
@@ -39,45 +39,66 @@ export const SignupPage = () => {
   }
 
   return (
-    <>
-      <h2>Signup</h2>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="name">Name:</label>
-        <input
-          id="name"
-          type="text"
-          value={name}
-          onChange={handleNameChange}
+    <div className="signup-container">
+      <h2 className="signup-title">Signup</h2>
+      <form className="signup-form" onSubmit={handleSubmit}>
+        <div className="form-group">
+          <label htmlFor="name" className="form-label">Name:</label>
+          <input
+            id="name"
+            className="form-input"
+            type="text"
+            value={name}
+            onChange={handleNameChange}
           />
-
-        <label htmlFor="surname">Surname:</label>
-        <input
-          id="surname"
-          type="text"
-          value={surname}
-          onChange={handleSurnameChange}
-          />
-
-        <label htmlFor="email">Email:</label>
-        <input
-          id="email"
-          type="text"
-          value={email}
-          onChange={handleEmailChange}
-        />
-        <label htmlFor="password">Password:</label>
-        <input
-          placeholder="Password"
-          id="password"
-          type="password"
-          value={password}
-          onChange={handlePasswordChange}
-        />
-        <input role="submit-button" id="submit" type="submit" value="Submit"  />
-        
-        </form>
-        
-      </>
-    );
-  };
+        </div>
   
+        <div className="form-group">
+          <label htmlFor="surname" className="form-label">Surname:</label>
+          <input
+            id="surname"
+            className="form-input"
+            type="text"
+            value={surname}
+            onChange={handleSurnameChange}
+          />
+        </div>
+  
+        <div className="form-group">
+          <label htmlFor="email" className="form-label">Email:</label>
+          <input
+            id="email"
+            className="form-input"
+            type="email"
+            value={email}
+            onChange={handleEmailChange}
+          />
+        </div>
+  
+        <div className="form-group">
+          <label htmlFor="password" className="form-label">Password:</label>
+          <input
+            id="password"
+            className="form-input"
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={handlePasswordChange}
+          />
+        </div>
+  
+        <input 
+          className="submit-button" 
+          role="submit-button" 
+          id="submit" 
+          type="submit" 
+          value="Submit"  
+        />
+      </form>
+      <footer>
+      <p className="team-roll-call">team earth &#127758; Joey &#127759; Karla &#127757; Robert &#127758; Glory &#127759; George &#127757; Polly &#127758; John
+      </p>
+    </footer>
+    </div>
+  );
+};
