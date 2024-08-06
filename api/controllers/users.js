@@ -26,15 +26,51 @@ const createUser = async (req, res) => {
     console.log('req.body: ', req.body);
     const user = new User(req.body);
     await user.save();
-    console.log('user: ', user);
+   
     res.status(201).json({user: user});
 };
+
+const addFriend = async (req, res) => {
+    const token = generateToken(req.user_id);
+    const user = await User.findByIdAndUpdate(req.user_id, {$push: {friends: req.body.friend_id}});
+    res.status(200).json({user: user, token: token});
+
+}
+
+const removeFriend = async (req, res) => {
+    const token = generateToken(req.user_id);
+    const user = await User.findByIdAndUpdate(req.user_id, {$pull: {friends: req.body.friend_id}});
+    res.status(200).json({user: user, token: token});
+}
+
+const getFriends = async (req, res) => {
+    const token = generateToken(req.user_id);
+    const user = await User.findById(req.user_id);
+
+    const friends = await User.find({_id: {$in: user.friends}});
+    console.log('friends: ', friends);
+    res.status(200).json({friends: friends, token: token});
+}
+
+
+const getNonFriends = async (req, res) => {
+    const token = generateToken(req.user_id);
+    const user = await User.findById(req.user_id);
+    const nonFriends = await User.find({ _id: { $ne: req.user_id, $nin: user.friends } });
+    res.status(200).json({ nonFriends: nonFriends, token: token });
+};
+
+
 
 const userController = {
     getUser: getUser,
     updateUser: updateUser,
     deleteUser: deleteUser,
     createUser: createUser,
+    addFriend: addFriend,
+    removeFriend: removeFriend,
+    getNonFriends: getNonFriends,
+    getFriends: getFriends
 };
 
 module.exports = userController;
