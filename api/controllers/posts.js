@@ -1,4 +1,5 @@
 const Post = require("../models/post");
+const User = require("../models/user");
 const { generateToken } = require("../lib/token");
 
 const getAllPosts = async (req, res) => {
@@ -9,7 +10,8 @@ const getAllPosts = async (req, res) => {
 
 const createPost = async (req, res) => {
   console.log(req.body);
-  const post = new Post({message: req.body.content }); 
+  const currentUser = await User.findById(req.user_id)
+  const post = new Post({message: req.body.content, user: currentUser.name + ' ' + currentUser.surname})
   post
     .save()
     .then((post) => {
