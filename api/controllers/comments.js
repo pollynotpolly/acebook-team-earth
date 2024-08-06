@@ -5,7 +5,6 @@ const getAllComments = async (req, res) => {
     const token = generateToken(req.user_id);
     const comments = await Comment.find({});
     res.status(200).json({comments: comments, token: token});
-
 }
 
 const getComment = async (req, res) => {
@@ -17,8 +16,14 @@ const getComment = async (req, res) => {
 
 const createComment = async (req, res) => {
     const token = generateToken(req.user_id);
-    console.log("req.body", req.body);
-    const comment = new Comment(req.body);
+   
+    post_id = req.body.postId.post_id;
+
+    content = req.body.content;
+ 
+    user_id = req.user_id;
+
+    const comment = new Comment({post_id: post_id, content: content, user_id: user_id});
     await comment.save();
     res.status(201).json({comment: comment, token: token});
 }
