@@ -2,6 +2,9 @@ import { getUserInfo } from "../../services/userInfos";
 import { getComment } from "../../services/comments";
 import { useParams } from "react-router-dom";
 
+import { useState, useEffect, navigate } from "react";
+
+
 // export const Comment = () => {
 //     const [commentContent, setCommentContent] = useState("");
 //     useEffect(() => {
