@@ -8,6 +8,8 @@ import { UserProfilePage } from "./pages/UserProfile/UserProfilePage";
 import { Layout } from "./components/Layout";
 import {EditProfile} from "./components/User/EditProfile";
 
+import { AllComments } from "./pages/AllCommentsTest/Allcomments";
+
 // docs: https://reactrouter.com/en/main/start/overview
 const router = createBrowserRouter([
   {
@@ -37,6 +39,10 @@ const router = createBrowserRouter([
       {
         path: '/my-profile-settings',
         element: <EditProfile  />,
+      },
+      {
+        path: "/allcomments",
+        element: <AllComments />,
       },
     ],
   },
