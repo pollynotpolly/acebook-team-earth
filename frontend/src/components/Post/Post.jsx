@@ -27,7 +27,9 @@ const Post = (props) => {
           </div>
           <p><article key={props.post._id}>{props.post.message}</article></p>
           <div classname="comment-list">
+            <h3>Comments</h3>
             <CommentList post_id={props.post._id}/>
+            <p> above</p>
           </div>
           {/* <p className="post-body">As of Monday, only about 56% of people eligible to get the shot have stepped forward in a
             nation with the
