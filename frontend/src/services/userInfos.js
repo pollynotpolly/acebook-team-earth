@@ -52,3 +52,86 @@ export const deleteUser = async () => {
     throw new Error("Unable to delete user");
   }
 };
+
+
+// Get all non-friends
+export const getNonFriends = async (token) => {
+  const requestOptions = {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  const response = await fetch(`${BACKEND_URL}/profiles/nonfriends`, requestOptions);
+
+  if (response.status !== 200) {
+    throw new Error("Unable to fetch non friends");
+  }
+
+  const data = await response.json();
+  return data;
+}
+
+// Add a friend
+export const addFriend = async (token, friend_id) => {
+  const requestOptions = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({ friend_id }),
+  };
+
+  const response = await fetch(`${BACKEND_URL}/profiles/friends`, requestOptions);
+
+  if (response.status !== 200) {
+    throw new Error("Unable to add friend");
+  }
+
+  const data = await response.json();
+  return data;
+}
+
+// Get all friends
+
+export const getFriends = async (token) => {
+  const requestOptions = {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  const response = await fetch(`${BACKEND_URL}/profiles/friends`, requestOptions);
+  
+  if (response.status !== 200) {
+    throw new Error("Unable to fetch friends");
+  }
+
+  const data = await response.json();
+  return data;
+};
+
+// Remove a friend
+
+export const removeFriend = async (token, friend_id) => {
+  const requestOptions = {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({ friend_id }),
+  };
+
+  const response = await fetch(`${BACKEND_URL}/profiles/friends`, requestOptions);
+
+  if (response.status !== 200) {
+    throw new Error("Unable to remove friend");
+  }
+
+  const data = await response.json();
+  return data;
+};
