@@ -3,21 +3,25 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { getUserInfo } from "../../services/userInfos";
+import { getUserInfoById } from "../../services/userInfos";
 import { UserProfileCard } from "../../components/User/UserProfileCard";
-import {ProfileFeed} from "../../components/Feeds/ProfileFeed";
+import {FeedPage} from "../Feed/FeedPage";
+import { useParams } from "react-router-dom";
 
 
 export const UserProfilePage = () => {
     const [userInfo, setUserInfo] = useState({});
     const navigate = useNavigate();
+    const { id } = useParams();
 
     useEffect(() => {
         const token = localStorage.getItem("token");
         const fetchUser = async () => {
             console.log("fetching user");
+
+            
         try {
-            const userInfo = await getUserInfo(token);
+            const  userInfo = await getUserInfoById(token, id);
             console.log("userInfo: ", userInfo.user);
             setUserInfo(userInfo.user);
         } catch (err) {
@@ -35,7 +39,7 @@ export const UserProfilePage = () => {
         <UserProfileCard user={userInfo} />
 
         {/* Will need a specific feed for profile - feed filtered for UserProfile */}
-        <ProfileFeed user={userInfo}/>  
+        <FeedPage/>
         </>
     ); 
 }
