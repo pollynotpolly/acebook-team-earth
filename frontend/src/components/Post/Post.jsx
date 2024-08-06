@@ -1,4 +1,5 @@
 import "./Post.css";
+import CommentList from "../Comment/CommentList";
 
 const Post = (props) => {
   return (
@@ -25,6 +26,9 @@ const Post = (props) => {
             <i className="post-menu-icon"></i>
           </div>
           <p><article key={props.post._id}>{props.post.message}</article></p>
+          <div classname="comment-list">
+            <CommentList />
+          </div>
           {/* <p className="post-body">As of Monday, only about 56% of people eligible to get the shot have stepped forward in a
             nation with the
             world’s second-worst Covid-19 outbreak.</p> */}

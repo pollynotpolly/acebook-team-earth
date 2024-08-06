@@ -35,3 +35,22 @@ export const getComment = async ({token, comment_id}) => {
     const data = await response.json();
     return data;
 };
+
+export const createComment = async (token, postId, content) => {
+    const requestOptions = {
+        method: "POST",
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ postId, content }),
+    };
+
+    const response = await fetch(`${BACKEND_URL}/comments`, requestOptions);
+
+    if (response.status !== 201) {
+        throw new Error("Unable to create comment");
+    }
+
+    const data = await response.json();
+    return data;
+};
