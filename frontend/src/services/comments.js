@@ -38,14 +38,21 @@ export const getComment = async ({token, comment_id}) => {
 };
 
 export const createComment = async (token, postId, content) => {
-    console.log("token", token, "postId", postId, "content", content);
+
+
+    const payload  = {
+        postId: postId,
+        content: content,
+        
+    };
+
     const newComment = {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({ postId, content }),
+        body: JSON.stringify(payload),
     };
 
     const response = await fetch(`${BACKEND_URL}/comments`, newComment);
@@ -55,5 +62,6 @@ export const createComment = async (token, postId, content) => {
     }
 
     const data = await response.json();
+
     return data;
 };
