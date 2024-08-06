@@ -4,8 +4,11 @@ const userController = require("../controllers/users");
 
 const router = express.Router();
 
-// Get user by id
+// Get user
 router.get("/", userController.getUser);
+// Get user by id
+router.get("/profiles/:id", userController.getUserById);
+
 //Update user by id
 router.put("/", userController.updateUser);
 //Delete user by id
