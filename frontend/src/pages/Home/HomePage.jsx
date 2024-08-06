@@ -1,6 +1,6 @@
 
 import "./HomePage.css";
-import { LoginComponent } from "../../components/Login-component";
+import { LoginComponent } from "../../components/Utilities/Login-component";
 
 export const HomePage = () => {
   return (

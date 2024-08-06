@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate, useOutletContext, Link } from "react-router-dom";
-import { login } from "../services/authentication";
+import { login } from "../../services/authentication";
 
 export const LoginComponent = () => {
   const [email, setEmail] = useState("");

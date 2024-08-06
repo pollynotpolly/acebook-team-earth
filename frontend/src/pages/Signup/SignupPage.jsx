@@ -2,16 +2,22 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./SignupPage.css";
 import { signup } from "../../services/authentication";
+import { PasswordValidator } from "../../components/Utilities/PasswordValidator"
 
 export const SignupPage = () => {
   const [email, setEmail,] = useState("");
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
   const [password, setPassword] = useState("");
+  const [isPasswordValid, setIsPasswordValid] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    if (!isPasswordValid) {
+      alert('Please fix the errors in the form');
+      return;
+    }
     try {
       await signup(name, surname, email, password);
       console.log("redirecting...:");
@@ -26,8 +32,9 @@ export const SignupPage = () => {
     setEmail(event.target.value);
   };
 
-  const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
+  const handlePasswordChange = (newPassword, isValid) => {
+    setPassword(newPassword);
+    setIsPasswordValid(isValid);
   };
 
   const handleNameChange = (event) => {
@@ -77,14 +84,7 @@ export const SignupPage = () => {
   
         <div className="form-group">
           <label htmlFor="password" className="form-label">Password:</label>
-          <input
-            id="password"
-            className="form-input"
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={handlePasswordChange}
-          />
+          <PasswordValidator onPasswordChange={handlePasswordChange} />
         </div>
   
         <input 
@@ -93,12 +93,9 @@ export const SignupPage = () => {
           id="submit" 
           type="submit" 
           value="Submit"  
+          disabled={!isPasswordValid}
         />
       </form>
-      <footer>
-      <p className="team-roll-call">team earth &#127758; Joey &#127759; Karla &#127757; Robert &#127758; Glory &#127759; George &#127757; Polly &#127758; John
-      </p>
-    </footer>
     </div>
   );
 };
