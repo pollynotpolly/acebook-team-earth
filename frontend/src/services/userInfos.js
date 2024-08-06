@@ -17,6 +17,29 @@ export const getUserInfo = async (token) => {
   return data;
 };
 
+export const getUserInfoById = async (token, id) => {
+  const requestOptions = {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  try {
+    const response = await fetch(`${BACKEND_URL}/profiles/profiles/${id}`, requestOptions);
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(`Unable to fetch user: ${errorData.message || response.statusText}`);
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Fetch user failed:', error);
+    throw error;
+  }
+};
+
 export const updateUserInfo = async  (token,data) => {
   console.log("data: ", data);
   console.log("token: ", token);  
