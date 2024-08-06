@@ -6,9 +6,9 @@ import { useNavigate } from "react-router-dom";
 
 import { getUserInfo } from "../../services/userInfos";
 import { UserProfileCard } from "../../components/User/UserProfileCard";
-import {ProfileFeed} from "../../components/Feeds/ProfileFeed";
 import CreatePostForm from "../../components/Input/CreatePostForm";
 import "./UserProfilePage.css";
+import { FeedPage } from "../Feed/FeedPage";
 
 export const MyUserProfilePage = () => {
     const [userInfo, setUserInfo] = useState({});
@@ -37,7 +37,7 @@ export const MyUserProfilePage = () => {
         <CreatePostForm user={userInfo} />
 
         {/* Will need a specific feed for profile - feed filtered for UserProfile */}
-        <ProfileFeed user={userInfo}/>  
+        <FeedPage/>  
         </>
     );
 }
