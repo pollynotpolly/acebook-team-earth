@@ -17,6 +17,7 @@ const getComment = async (req, res) => {
 
 const createComment = async (req, res) => {
     const token = generateToken(req.user_id);
+    console.log("req.body", req.body);
     const comment = new Comment(req.body);
     await comment.save();
     res.status(201).json({comment: comment, token: token});

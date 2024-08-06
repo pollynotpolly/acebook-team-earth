@@ -5,7 +5,7 @@ import Comment from "../../components/Comment/Comment";
 import { getComments } from "../../services/comments";
 import CreateCommentForm from "../../components/Input/CreateCommentForm";
 
-const CommentList = () => {
+const CommentList = (postId) => {
     const [comments, setComments] = useState([]);
     const navigate = useNavigate();
 
@@ -32,7 +32,7 @@ const CommentList = () => {
 
     return (
         <>
-            <CreateCommentForm />
+            <CreateCommentForm postId={postId}/>
             <div className="comment-list" role="comment-list">
                 {comments.map((comment) => (
                     <Comment comment={comment} key={comment._id} />

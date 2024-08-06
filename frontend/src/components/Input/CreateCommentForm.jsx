@@ -3,11 +3,11 @@ import { createComment } from "../../services/comments";
 
 export const CreateCommentForm = ({ postId }) => {
     const [content, setContent] = useState("");
-    const token = localStorage.getItem("token");
-
+    
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
+            const token = localStorage.getItem("token");
             await createComment(token, postId, content);
             setContent("");
         } catch (err) {
