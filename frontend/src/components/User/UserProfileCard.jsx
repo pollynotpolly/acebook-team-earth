@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 // import Link from 'react-router-dom';
 
 
+
 export const UserProfileCard = ({ user }) => {
 
     return (
@@ -18,6 +19,7 @@ export const UserProfileCard = ({ user }) => {
         <p>{user.about}</p>
         {/* edit link page.. <button> <Link /></button> */}
         <Link to="/my-profile-settings/">Edit Profile</Link>
+        <Link to="/my-friends/">Friends</Link>
         </div>
     );
     }
