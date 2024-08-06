@@ -10,6 +10,19 @@ const getUser = async (req, res) => {
 
 };
 
+const getUserById = async (req, res) => {
+    try {
+        const user_id = req.params.id;
+        const token = generateToken(user_id);
+        const user = await User.findById(user_id);
+        res.status(200).json({user: user, token: token});
+
+    } catch (err) {
+        res.status(404).json({message: "User not found"});
+    }
+
+}
+
 const updateUser = async (req, res) => {
     const token = generateToken(req.user_id);
     const user = await User.findByIdAndUpdate(req.user_id, req.body)
@@ -70,7 +83,8 @@ const userController = {
     addFriend: addFriend,
     removeFriend: removeFriend,
     getNonFriends: getNonFriends,
-    getFriends: getFriends
+    getFriends: getFriends,
+    getUserById: getUserById
 };
 
 module.exports = userController;
