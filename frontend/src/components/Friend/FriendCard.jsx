@@ -12,7 +12,7 @@ export const FriendCard = ({ friend }) => {
                 )}
             </div>
             <h2>{friend.name} {friend.surname}</h2>
-            <Link to={`/friend-profile/${friend._id}`}>View Profile</Link>
+            <Link to={`/profile/${friend._id}`}>View Profile</Link>
         </div>
     );
 };
