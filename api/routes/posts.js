@@ -10,7 +10,7 @@ const commentController = require("../controllers/comments");
 
 
 //DELETE a post
-//router.delete("/", PostsController.deletePost);
+router.delete("/:id", PostsController.deletePost);
 
 //UPDATE a post
 //router.patch("/", Postcontroller.updatePost);
