@@ -6,12 +6,11 @@ import { useNavigate } from "react-router-dom";
 
 import { getUserInfo } from "../../services/userInfos";
 import { UserProfileCard } from "../../components/User/UserProfileCard";
-import { FeedPage } from "../Feed/FeedPage";
+import CreatePostForm from "../../components/Input/CreatePostForm";
 import "./UserProfilePage.css";
+import { FeedPage } from "../Feed/FeedPage";
 
-
-
-export const UserProfilePage = () => {
+export const MyUserProfilePage = () => {
     const [userInfo, setUserInfo] = useState({});
     const navigate = useNavigate();
     
