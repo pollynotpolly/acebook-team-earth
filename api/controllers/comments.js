@@ -23,7 +23,7 @@ const createComment = async (req, res) => {
  
     user_id = req.user_id;
 
-    const comment = new Comment({post_id: post_id, content: content, user_id: user_id});
+    const comment = new Comment({ post_id, content, user_id});
     await comment.save();
     res.status(201).json({comment: comment, token: token});
 }

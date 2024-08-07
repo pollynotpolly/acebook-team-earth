@@ -5,7 +5,7 @@ import Comment from "../../components/Comment/Comment";
 import { getComments } from "../../services/comments";
 import CreateCommentForm from "../../components/Input/CreateCommentForm";
 
-const CommentList = ({ postId }) => {
+const CommentList = ({postId}) => {
     const [comments, setComments] = useState([]);
     const navigate = useNavigate();
     
@@ -16,6 +16,8 @@ const CommentList = ({ postId }) => {
             .then((data) => {
                 setComments(data.comments);
                 localStorage.setItem("token", data.token);
+                const unorderedComments = data.comments;
+                setComments(unorderedComments.reverse());
             })
             .catch((err) => {
                 console.error(err);
@@ -24,7 +26,7 @@ const CommentList = ({ postId }) => {
         }
     }, [navigate]);
     
-    const filteredComments = comments.filter((comment) => comment.postId === postId);
+    const filteredComments = comments.filter((comment) => comment.post_id === postId);
     const token = localStorage.getItem("token");
     if (!token) {
         navigate("/login");

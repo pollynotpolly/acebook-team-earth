@@ -8,8 +8,9 @@ export const CreateCommentForm = ({ postId }) => {
         event.preventDefault();
         try {
             const token = localStorage.getItem("token");
-            await createComment(token, postId, content);
+            await createComment(token, {post_id: postId}, content);
             setContent("");
+            window.location.reload();
         } catch (err) {
             console.error(err);
         }

@@ -19,7 +19,7 @@ export const getComments = async (token) => {
     return data;
 };
 
-export const getComment = async ({token, comment_id}) => {
+export const getComment = async ({token}) => {
     const requestOptions = {
         method: "GET",
         headers: {
@@ -27,7 +27,7 @@ export const getComment = async ({token, comment_id}) => {
         },
     };
 
-    const response = await fetch(`${BACKEND_URL}/comments/${comment_id}`, requestOptions);
+    const response = await fetch(`${BACKEND_URL}/comments`, requestOptions);
 
     if (response.status !== 200) {
         throw new Error("Unable to fetch comments");
