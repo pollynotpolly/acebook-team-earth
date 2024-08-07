@@ -59,6 +59,7 @@ export const FeedPage = () => {
 
   return (
     <>
+{/*Works, np - maybe better in the CreatePostForm component? */}
       <div className="create-post-container">
         <CreatePostForm />
       </div>
