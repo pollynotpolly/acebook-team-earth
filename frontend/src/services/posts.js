@@ -24,7 +24,8 @@ export const createPost = async (token, content, user) => {
   const dateTimeString = new Date().toLocaleString("en-GB"); 
   console.log("date time string " + dateTimeString);
   const payload = {
-    content: content + ` Post created at ${dateTimeString}`
+    content: content,
+    time: dateTimeString,
   }
   const displayName = {
     content: user
@@ -48,4 +49,26 @@ export const createPost = async (token, content, user) => {
   const data = await response.json();
   return data;
 };
+
+//DELETE post (KR: 49-67)
+export const deletePost = async (token, id) => {   
+  const deleteMethod = {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  const response = await fetch(`${BACKEND_URL}/posts/${id}`, deleteMethod);
+
+  if (response.status !== 201) {
+    throw new Error("Unable to create posts");
+  }
+
+  const data = await response.json();
+  return data;
+};
+  
+
 

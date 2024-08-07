@@ -7,11 +7,11 @@ const getAllPosts = async (req, res) => {
   const token = generateToken(req.user_id);
   res.status(200).json({ posts: posts, token: token });
 };
-
+//CREATE a new post 
 const createPost = async (req, res) => {
   console.log(req.body);
   const currentUser = await User.findById(req.user_id)
-  const post = new Post({message: req.body.content, user: currentUser.name + ' ' + currentUser.surname})
+  const post = new Post({message: req.body.content, time: req.body.time, user: currentUser.name + ' ' + currentUser.surname})
   post
     .save()
     .then((post) => {
@@ -25,17 +25,33 @@ const createPost = async (req, res) => {
   const newToken = generateToken(req.user_id);
 
 };
+//DELETE a post (KR:lines 27-41)
+const deletePost = async (req, res) => { 
+  console.log("______>>>>>>"); 
+  console.log(req);
+  const { id } =req.params;
 
-//const deletePost = async (req, res) => {  
-// };
+  try {
+    const result = await Post.findOneAndDelete({ _id: id});
+    if (result) {
+      res.status(200).json({ message: "Post deleted successfully" });
+    } else {
+      res.status(404).json({ message: "Post not found" });
+    }
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Something went wrong" });
+  }
+};
 
+//UPDATE a post
 //const updatePost = async (req, res) => {
 // };
 
 const PostsController = {
   getAllPosts: getAllPosts,
   createPost: createPost,
-  //deletePost: deletePost,
+  deletePost: deletePost,
   //updatePost: updatePost,
 };
 

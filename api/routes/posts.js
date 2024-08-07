@@ -7,7 +7,7 @@ router.get("/", PostsController.getAllPosts);
 router.post("/", PostsController.createPost);
 
 //DELETE a post
-//router.delete("/", PostsController.deletePost);
+router.delete("/:id", PostsController.deletePost);
 
 //UPDATE a post
 //router.patch("/", Postcontroller.updatePost);

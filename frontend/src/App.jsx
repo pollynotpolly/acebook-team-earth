@@ -1,12 +1,14 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./App.css";
 import { HomePage } from "./pages/Home/HomePage";
-import { LoginComponent } from "./components/Login-component";
+import { LoginComponent } from "./components/Utilities/Login-component";
 import { SignupPage } from "./pages/Signup/SignupPage";
 import { FeedPage } from "./pages/Feed/FeedPage";
-import { UserProfilePage } from "./pages/UserProfile/UserProfilePage";
+import { MyUserProfilePage } from "./pages/UserProfile/MyUserProfilePage";
 import { Layout } from "./components/Layout";
 import {EditProfile} from "./components/User/EditProfile";
+import { UserProfilePage } from "./pages/UserProfile/StandardUserProfile";
+import {MyFriends} from "./pages//Friends/MyFriends";
 
 // docs: https://reactrouter.com/en/main/start/overview
 const router = createBrowserRouter([
@@ -32,13 +34,22 @@ const router = createBrowserRouter([
       },
       {
         path: "/my-profile",
-        element: <UserProfilePage />,
+        element: <MyUserProfilePage />,
       },
       {
         path: '/my-profile-settings',
         element: <EditProfile  />,
       },
+      {
+        path: '/my-friends',
+        element: <MyFriends />,
+      },
+      {
+        path: "/profile/:id",
+        element: <UserProfilePage />,
+      },
     ],
+    
   },
 
 ]);
