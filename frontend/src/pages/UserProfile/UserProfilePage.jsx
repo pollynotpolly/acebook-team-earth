@@ -33,10 +33,27 @@ export const UserProfilePage = () => {
     }, [navigate]);
     
     return (
-        <>
-        <UserProfileCard user={userInfo} />
-        {/* Will need a specific feed for profile - feed filtered for UserProfile */}
-        <FeedPage/>  
-        </>
+        <div className="profile-and-feed-wrapper">
+            <div className="profile-section">
+{/*                 Should work np, maybe better to move the divs to profile card? */}
+                <div className="user-profile-card">
+                    <UserProfileCard user={userInfo} />
+                </div>
+                <div className="additional-content-container"><h2>my photos</h2>
+                <div className="image-grid">
+                    <img src="src/assets/image1.jpg" alt="Image 1" />
+                    <img src="src/assets/image2.jpg" alt="Image 2" />
+                    <img src="src/assets/image3.jpg" alt="Image 3" />
+                    <img src="src/assets/image4.jpg" alt="Image 4" />
+                    <img src="src/assets/image5.jpg" alt="Image 5" />
+                    <img src="src/assets/image6.jpg" alt="Image 6" />
+                </div>
+                </div>
+            </div>
+            <div className="main-content">
+                <FeedPage />
+            </div>
+        </div>
+        
     );
-}
+}    
