@@ -50,7 +50,7 @@ const Post = (props) => {
           <p><article key={props.post._id}>{props.post.message}</article></p>
           <div classname="comment-list">
             <h3>Comments</h3>
-            <CommentList post_id={props.post._id}/>
+            <CommentList post_Id={props.post._id}/>
             <p> above</p>
           </div>
           <div className="post-actions">
