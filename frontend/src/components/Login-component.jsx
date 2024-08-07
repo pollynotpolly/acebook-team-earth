@@ -30,6 +30,12 @@ export const LoginComponent = () => {
     setPassword(event.target.value);
   };
 
+  const successfulLoginMessage = () => {
+    return (
+      alert("You have successfully logged in!\n\nYou will be redirected to the posts page.")
+    );
+  }
+
   return (
     <>
       <div className="login-form">
@@ -50,9 +56,9 @@ export const LoginComponent = () => {
             onChange={handlePasswordChange}
           />
           <div className="login">
-            <input role="submit-button" id="submit" type="submit" value="Login" />
+            <input role="submit-button" id="submit" type="submit" value="Login" onClick={successfulLoginMessage} />
           </div>
-          <div className="button">
+          <div className="signup">
             <Link to="/signup">Create new account</Link>
           </div>
         </form>
