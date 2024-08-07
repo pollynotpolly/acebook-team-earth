@@ -35,12 +35,29 @@ const deleteUser = async (req, res) => {
     res.status(204).json({message: "User deleted", token: token});
 }
 
-const createUser = async (req, res) => {
-    console.log('req.body: ', req.body);
-    const user = new User(req.body);
-    await user.save();
-   
-    res.status(201).json({user: user});
+const createUser = async (req, res) => {       // try-catch block... two main parts: a "try" block and one or more "catch" blocks
+    try {                                     // try block: contains the code that might throw an exception.. if an exception occurs in this block, the rest of the code in the try block is skipped and control handed to catch block 
+        console.log('req.body: ', req.body);
+        
+        // Check if a user with the given email already exists
+        const existingUser = await User.findOne({ email: req.body.email });
+        if (existingUser) {
+            return res.status(400).json({ message: "Email already in use" });
+        }
+
+        // If no existing user, create a new one
+        const user = new User(req.body);
+        await user.save();
+        console.log('user: ', user);
+        res.status(201).json({ user: user });
+    } catch (error) {                                    // specifies what type of exception to catch. contains code to handle the exception if it occurs - can be used to handle different types of exceptions
+        console.error('Error creating user:', error);
+        if (error.code === 11000) {
+            // This is a MongoDB duplicate key error
+            return res.status(400).json({ message: "Email already in use" });
+        }
+        res.status(500).json({ message: "Error creating user" });
+    }
 };
 
 const addFriend = async (req, res) => {
