@@ -20,12 +20,15 @@ export const getPosts = async (token) => {
 };
 
 //formatting the user HTTP POST request to send it to the API:
-export const createPost = async (token, content) => {   
+export const createPost = async (token, content, user) => {   
   const dateTimeString = new Date().toLocaleString("en-GB"); 
   console.log("date time string " + dateTimeString);
   const payload = {
     content: content,
-    time:  dateTimeString
+    time: dateTimeString,
+  }
+  const displayName = {
+    content: user
   }
   const newPost = {
     method: "POST",
@@ -34,6 +37,7 @@ export const createPost = async (token, content) => {
       Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify(payload),
+    user: JSON.stringify(displayName)
   };
 
   const response = await fetch(`${BACKEND_URL}/posts`, newPost);

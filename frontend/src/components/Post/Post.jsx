@@ -35,7 +35,7 @@ const Post = (props) => {
               <img src="images/page-thumb-1.png" />
               <div>              
                 <div>
-                  <span className="author-name">Bloomberg</span>
+                  <span className="author-name">{props.post.user}</span>
                   <i className="verified-icon"></i>
                 </div>
                 <div className="details">
