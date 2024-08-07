@@ -9,6 +9,7 @@ export const Navbar = ({ setIsLoggedIn }) => {
             <ul>
                 <li><Link to="/posts">Feed</Link></li>
                 <li><Link to="/my-profile">Profile</Link></li>
+                <li><Link to="/my-friends">Friends</Link></li>
                 <li><LogoutButton setIsLoggedIn={setIsLoggedIn} /></li>
             </ul>
         </nav>
