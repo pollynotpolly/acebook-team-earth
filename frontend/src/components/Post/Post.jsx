@@ -62,6 +62,7 @@ const Post = (props) => {
                 <span>Share</span>
               </div>
               {/* <button role="update-button" className="postupdate" type="update" onClick={handleEdit} value="Update"> Edit </button> */}
+              <button role="update-button" className="postupdate" type="update" value="Update">🔧 Edit </button>
               <button role="delete-button" className="postdelete" type="delete" onClick={handleDelete}value="Delete"> 🗑️ Delete </button>  
             </div>
           </div>

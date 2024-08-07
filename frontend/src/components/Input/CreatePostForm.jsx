@@ -37,7 +37,7 @@ function CreatePostForm(){
           <div className="new-post-action">
             <img src="src/assets/ProfileIcon.png" className="my-profile" />
             
-            <input placeholder="What's on your mind, Yongmin?" className="postinput" value={userInput} onChange={handleUserInput} />
+            <input placeholder="What's on your mind, Earthling?" className="postinput" value={userInput} onChange={handleUserInput} />
             <button role="submit-button" className="postsubmit" type="submit" value="Submit" onClick={handleSubmit}> Post </button> 
           </div>
           <div className="new-post-types">
