@@ -33,13 +33,17 @@ export const FeedPage = () => {
 
   return (
     <>
-      <CreatePostForm />
-      <div className="feed" role="feed">
-        {posts.map((post) => (
-          <Post post={post} key={post._id} />
-          
-        ))}
+{/*Works, np - maybe better in the CreatePostForm component? */}
+      <div className="create-post-container">
+        <CreatePostForm />
+      </div>
+      <div className="posts-container">
+        <div className="feed" role="feed">
+          {posts.map((post) => (
+            <Post post={post} key={post._id} />
+          ))}
+        </div>
       </div>
     </>
   );
-};
+}  
