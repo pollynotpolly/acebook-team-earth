@@ -1,26 +1,27 @@
-// This is the profile page, where the user's profile card is displayed and the users posts are displayed below.
-
+//This profile page is for non logged in users. It will display the user's profile card and their posts.
 
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { getUserInfo } from "../../services/userInfos";
+import { getUserInfoById } from "../../services/userInfos";
 import { UserProfileCard } from "../../components/User/UserProfileCard";
-import { FeedPage } from "../Feed/FeedPage";
-import "./UserProfilePage.css";
-
+import {FeedPage} from "../Feed/FeedPage";
+import { useParams } from "react-router-dom";
 
 
 export const UserProfilePage = () => {
     const [userInfo, setUserInfo] = useState({});
     const navigate = useNavigate();
-    
+    const { id } = useParams();
+
     useEffect(() => {
         const token = localStorage.getItem("token");
         const fetchUser = async () => {
             console.log("fetching user");
+
+            
         try {
-            const userInfo = await getUserInfo(token);
+            const  userInfo = await getUserInfoById(token, id);
             console.log("userInfo: ", userInfo.user);
             setUserInfo(userInfo.user);
         } catch (err) {
@@ -30,12 +31,12 @@ export const UserProfilePage = () => {
         };
     
         fetchUser();
-    }, [navigate]);
-    
+    }
+    , [navigate]);
+
     return (
         <div className="profile-and-feed-wrapper">
             <div className="profile-section">
-{/*                 Should work np, maybe better to move the divs to profile card? */}
                 <div className="user-profile-card">
                     <UserProfileCard user={userInfo} />
                 </div>
@@ -50,10 +51,9 @@ export const UserProfilePage = () => {
                 </div>
                 </div>
             </div>
-            <div className="main-content">
+            <div className="feed-container">
                 <FeedPage />
             </div>
         </div>
-        
-    );
-}    
+    )
+}
