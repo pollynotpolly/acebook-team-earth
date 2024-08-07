@@ -35,6 +35,7 @@ export const UserProfilePage = () => {
     return (
         <div className="profile-and-feed-wrapper">
             <div className="profile-section">
+{/*                 Should work np, maybe better to move the divs to profile card? */}
                 <div className="user-profile-card">
                     <UserProfileCard user={userInfo} />
                 </div>
