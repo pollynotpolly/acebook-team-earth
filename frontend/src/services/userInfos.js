@@ -139,8 +139,9 @@ export const getFriends = async (token) => {
 // Remove a friend
 
 export const removeFriend = async (token, friend_id) => {
+  console.log('Sending this id to be removed from DB: ' ,friend_id);
   const requestOptions = {
-    method: "DELETE",
+    method: "PUT",
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
@@ -148,7 +149,7 @@ export const removeFriend = async (token, friend_id) => {
     body: JSON.stringify({ friend_id }),
   };
 
-  const response = await fetch(`${BACKEND_URL}/profiles/friends`, requestOptions);
+  const response = await fetch(`${BACKEND_URL}/profiles/friends/${friend_id}`, requestOptions);
 
   if (response.status !== 200) {
     throw new Error("Unable to remove friend");

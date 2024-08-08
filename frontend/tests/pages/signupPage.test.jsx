@@ -2,34 +2,42 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { vi } from "vitest";
 
-import { useNavigate } from "react-router-dom";
 import { signup } from "../../src/services/authentication";
-
 import { SignupPage } from "../../src/pages/Signup/SignupPage";
 
-// Mocking React Router's useNavigate function
-vi.mock("react-router-dom", () => {
-  const navigateMock = vi.fn();
-  const useNavigateMock = () => navigateMock; // Create a mock function for useNavigate
-  return { useNavigate: useNavigateMock };
-});
+const mockNavigate = vi.fn();
+vi.mock('react-router-dom', () => ({
+  ...vi.importActual('react-router-dom'),
+  useNavigate: () => mockNavigate
+}));
 
-// Mocking the signup service
-vi.mock("../../src/services/authentication", () => {
-  const signupMock = vi.fn();
-  return { signup: signupMock };
-});
+vi.mock("../../src/services/authentication", () => ({
+  signup: vi.fn()
+}));
 
-// Reusable function for filling out signup form
+vi.mock("../../src/components/Utilities/PasswordValidator", () => ({
+  PasswordValidator: ({ onPasswordChange }) => (
+    <input
+      type="password"
+      onChange={(e) => onPasswordChange(e.target.value, true)}
+      data-testid="password-validator"
+    />
+  )
+}));
+
 const completeSignupForm = async () => {
   const user = userEvent.setup();
 
+  const nameInputEl = screen.getByLabelText("Name:");
+  const surnameInputEl = screen.getByLabelText("Surname:");
   const emailInputEl = screen.getByLabelText("Email:");
-  const passwordInputEl = screen.getByLabelText("Password:");
+  const passwordInputEl = screen.getByTestId("password-validator");
   const submitButtonEl = screen.getByRole("submit-button");
 
+  await user.type(nameInputEl, "Test");
+  await user.type(surnameInputEl, "User");
   await user.type(emailInputEl, "test@email.com");
-  await user.type(passwordInputEl, "1234");
+  await user.type(passwordInputEl, "ValidPassword1234!");
   await user.click(submitButtonEl);
 };
 
@@ -40,30 +48,33 @@ describe("Signup Page", () => {
 
   test("allows a user to signup", async () => {
     render(<SignupPage />);
-
     await completeSignupForm();
-
-    expect(signup).toHaveBeenCalledWith("test@email.com", "1234");
+    expect(signup).toHaveBeenCalledWith("Test", "User", "test@email.com", "ValidPassword1234!");
   });
 
   test("navigates to /login on successful signup", async () => {
     render(<SignupPage />);
-
-    const navigateMock = useNavigate();
-
     await completeSignupForm();
-
-    expect(navigateMock).toHaveBeenCalledWith("/login");
+    expect(mockNavigate).toHaveBeenCalledWith("/login");
   });
 
   test("navigates to /signup on unsuccessful signup", async () => {
+    vi.mocked(signup).mockRejectedValue(new Error("Error signing up"));
+    render(<SignupPage />);
+    await completeSignupForm();
+    expect(mockNavigate).toHaveBeenCalledWith("/signup");
+  });
+
+  test("submit button is disabled when password is invalid", async () => {
     render(<SignupPage />);
 
-    signup.mockRejectedValue(new Error("Error signing up"));
-    const navigateMock = useNavigate();
+    const submitButtonEl = screen.getByRole("submit-button");
+    expect(submitButtonEl.disabled).toBe(true);
 
-    await completeSignupForm();
+    // Simulate valid password input
+    const passwordInputEl = screen.getByTestId("password-validator");
+    await userEvent.type(passwordInputEl, "ValidPassword123!");
 
-    expect(navigateMock).toHaveBeenCalledWith("/signup");
+    expect(submitButtonEl.disabled).toBe(false);
   });
 });

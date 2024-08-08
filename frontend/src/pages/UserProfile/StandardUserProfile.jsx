@@ -7,6 +7,7 @@ import { getUserInfoById } from "../../services/userInfos";
 import { UserProfileCard } from "../../components/User/UserProfileCard";
 import {FeedPage} from "../Feed/FeedPage";
 import { useParams } from "react-router-dom";
+import { MyFriends } from "../../components/Friend/MyFriends";
 
 
 export const UserProfilePage = () => {
@@ -50,7 +51,9 @@ export const UserProfilePage = () => {
                     <img src="src/assets/image6.jpg" alt="Image 6" />
                 </div>
                 </div>
+                <MyFriends />
             </div>
+
             <div className="feed-container">
                 <FeedPage />
             </div>

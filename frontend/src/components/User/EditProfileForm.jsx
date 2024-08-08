@@ -1,22 +1,17 @@
 import React  from "react";
 import { updateUserInfo } from "../../services/userInfos";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
-export const EditProfile =(props) => {
-    const [userName, setUsername] = useState("");
-    const [userSurname, setUserSurname] = useState("");
-    const [userAbout, setUserAbout] = useState("");
+export const EditProfileForm =(props) => {
+    console.log(props.closeModal);
+
+
+    const [userAbout, setUserAbout] = useState(props.user.about);
     const navigate = useNavigate();
 
-    const handleName = (e) => {
-        setUsername(e.target.value);
-    }
+    console.log(userAbout);
 
-    const handleSurname = (e) => {
-        setUserSurname(e.target.value);
-    }
 
     const handleAbout = (e) => {
         setUserAbout(e.target.value);
@@ -29,56 +24,36 @@ export const EditProfile =(props) => {
         e.preventDefault();
         try {
             const updatedUser = await updateUserInfo(token,{
-                name: userName,
-                surname: userSurname,
+                name: props.user.name,
+                surname: props.user.surname,
                 about: userAbout,
             });
 
             console.log(updatedUser);
-            navigate("/my-profile");
+            props.closeModal();
         } catch (error) {
             console.error(error);
         }
     };
 
     return (
-        <div className="edit-profile-container">
-            <h2>edit profile</h2>
-        <div className="edit-profile">
+    <>
         <form onSubmit={handleSubmit}>
             <label>
                 Change Profile picture:
-            </label>
             <input
                     type="text"
                     name="name"
                     ></input>
-            <label >
-                Name:
-                <input
-                    type="text"
-                    name="name"
-                    required={true}
-                    value={userName}
-                    onChange={handleName}
-                />
-            </label>
-            <label>
-                Surname:
-                <input
-                    type="text"
-                    name="surname"
-                    required={true}
-                    value={userSurname}
-                    onChange={handleSurname}
-                />
-            </label>
+                    </label>
+
             <label>
                 About:
                 <textarea
                     name="about"
                     value={userAbout}
                     onChange={handleAbout}
+                    placeholder={userAbout}
                 />
             </label>
             <div className="button-container">
@@ -86,7 +61,6 @@ export const EditProfile =(props) => {
             
             </div>
             </form>
-            </div>
-            </div>
+  </>
     )
 }

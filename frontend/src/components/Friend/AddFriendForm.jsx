@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { getNonFriends, addFriend } from '../../services/userInfos';
+import { FriendCard } from './FriendCard';
 
 export const AddFriendForm = () => {
     const [nonFriends, setNonFriends] = useState([]);
@@ -35,22 +36,28 @@ export const AddFriendForm = () => {
         fetchNonFriends();
     }, []);
 
-    return (
-        <div className='add-friend-form'>
-            <h2>Add a Friend</h2>
-            <form onSubmit={handleAddFriend}>
-                <select name='friend_id' required>
-                    <option value="">Select a friend</option>
-                    {loading ? (
-                        <option>Loading...</option>
-                    ) : (
-                        nonFriends.map((friend) => (
-                            <option key={friend._id} value={friend._id}>{friend.name} {friend.surname} </option>
-                        ))
-                    )}
-                </select>
-                <button type='submit'>Add Friend</button>
-            </form>
-        </div>
-    );
+    
+
+return (
+    <>
+        <div className='my-friends-container'>
+            <h1>Add Friends</h1>
+            {loading ? (
+                <p>Loading people...</p>
+            ) : nonFriends.length === 0 ? (
+                <p>No-one to add.</p>
+            ) : (
+                <>
+                <div className='friend-card-grid'>
+                {nonFriends.map((nonFriends) => (
+                    <FriendCard friend={nonFriends} key={nonFriends.id} />
+                ))}
+                </div>
+                </>
+            )}
+                
+            </div>
+    </>
+);
 };
+
