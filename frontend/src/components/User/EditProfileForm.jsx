@@ -41,10 +41,12 @@ export const EditProfileForm =(props) => {
         <form onSubmit={handleSubmit}>
             <label>
                 Change Profile picture:
-            <input
-                    type="text"
-                    name="name"
-                    ></input>
+                <input
+        className="file-uploader"
+        type="file"
+        onChange="upload()"
+        accept="image/*"
+    />
                     </label>
 
             <label>
