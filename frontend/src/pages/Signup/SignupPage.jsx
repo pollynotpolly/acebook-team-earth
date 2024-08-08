@@ -93,7 +93,7 @@ export const SignupPage = () => {
           id="submit" 
           type="submit" 
           value="Submit"  
-          disabled={!isPasswordValid}
+          disabled={!isPasswordValid}   /* disables button until valid password  */
         />
       </form>
     </div>

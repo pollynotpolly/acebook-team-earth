@@ -64,3 +64,27 @@ describe("/users", () => {
     });
   });
 });
+
+describe("POST, when email already exists", () => {
+  test("returns 400 status and does not create a new user", async () => {
+    // First, create a user
+    await request(app)
+      .post("/users")
+      .send({ email: "existing@email.com", password: "1234", name: "Existing" });
+
+    // Attempt to create another user with the same email
+    const response = await request(app)
+      .post("/users")
+      .send({ email: "existing@email.com", password: "5678", name: "Duplicate" });
+
+    // Check the response
+    expect(response.statusCode).toBe(400);
+    expect(response.body.message).toEqual("Email already in use");
+
+    // Verify that no new user was created
+    const users = await User.find();
+    expect(users.length).toEqual(1);
+    expect(users[0].email).toEqual("existing@email.com");
+    expect(users[0].name).toEqual("Existing");
+  });
+});
