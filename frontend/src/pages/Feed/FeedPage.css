@@ -1,0 +1,43 @@
+.posts-container {
+    width: 100%;
+    max-width: 900px; 
+    margin: 10px auto; 
+    padding: 20px;
+    background-color: #fff; 
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1); 
+    box-sizing: border-box; 
+  }
+  
+  .create-post-container {
+    width: 100%;
+    margin-bottom: 20px; /* Space between the form and the columns */
+  }
+  
+  .columns-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  .column {
+    padding: 10px;
+  }
+  
+  .left, .right {
+    width: 25%;
+  }
+  
+  .middle {
+    width: 50%;
+  }
+  
+  @media (max-width: 768px) {
+    .columns-container {
+      flex-direction: column;
+    }
+  
+    .left, .middle, .right {
+      width: 100%;
+    }
+  }

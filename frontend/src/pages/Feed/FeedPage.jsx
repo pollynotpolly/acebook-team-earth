@@ -6,6 +6,7 @@ import Post from "../../components/Post/Post";
 import CreatePostForm from "../../components/Input/CreatePostForm";
 import RightFeed from "../../components/Ads/RightFeed";
 import LeftFeed from "../../components/Ads/LeftFeed";
+import "./feedpage.css"
 
 
 
@@ -44,71 +45,26 @@ export const FeedPage = () => {
 
   return (
     <>
-
-{/*Works, np - maybe better in the CreatePostForm component? */}
-      
-
-
-  
-      <div className = "feed-page">
-
-        {/* container for the form */}
-      <div className="posts-container">
-
-      <div className="create-post-container">
-        <CreatePostForm refreshPosts={fetchPosts} />
+      <div className="feed-page">
+        <div className="posts-container">
+          <div className="create-post-container">
+            <CreatePostForm refreshPosts={fetchPosts} />
+          </div>
+          <div className="columns-container">
+            <div className="column left">
+              <LeftFeed />
+            </div>
+            <div className="column middle" role="feed">
+              {posts.map((post) => (
+                <Post post={post} key={post._id} />
+              ))}
+            </div>
+            <div className="column right">
+              <RightFeed />
+            </div>
+          </div>
+        </div>
       </div>
-
-      </div>
-
-
-        <div>
-        <div className ="LeftFeed">
-        <LeftFeed />
-        </div>
-
-        <div className="feed" role="feed">
-          {posts.map((post) => (
-            <Post post={post} key={post._id} />
-          ))}
-        </div>
-
-        <div className ="LeftFeed">
-          <RightFeed />
-        </div>
-        </div>
-
-        </div>
-        
-
-        {/* <div className="feed-page">
-  Top container with LeftFeed, CreatePostForm, and RightFeed 
-  <div className="top-container">
-    <div className="left-feed">
-      <LeftFeed />
-    </div>
-
-    <div className="create-post-container">
-      <CreatePostForm refreshPosts={fetchPosts} />
-    </div>
-
-    <div className="right-feed">
-      <RightFeed />
-    </div>
-  </div>
-
-  
-  <div className="posts-container" role="feed">
-    {posts.map((post) => (
-      <Post post={post} key={post._id} />
-    ))}
-  </div>
-</div> */}
-
-
-        
-
-      
     </>
   );
 }  
