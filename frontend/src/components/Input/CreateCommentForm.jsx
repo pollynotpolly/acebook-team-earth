@@ -25,7 +25,7 @@ export const CreateCommentForm = ({ postId }) => {
                 placeholder="Add a comment..."
                 required
             />
-            <button type="submit">✉️</button>
+            <button type="submit">✉️ Submit</button>
         </form>
     );
 }

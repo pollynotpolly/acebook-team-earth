@@ -2,8 +2,10 @@ import "./Post.css";
 import { deletePost } from "../../services/posts";
 // import { set } from "mongoose";
 import CommentList from "../Comment/CommentList";
+import { useState } from "react";
 
 const Post = (props) => {
+  const [showComments, setShowComments] = useState(false);
   
   const handleDelete = async (event) => {
     event.preventDefault();
@@ -16,6 +18,10 @@ const Post = (props) => {
     }
     window.location.reload();
   };
+
+  const toggleComments = () => {
+    setShowComments(!showComments);
+  }
 
   // const handleEdit = (event) => {
   //   event.preventDefault();
@@ -48,10 +54,16 @@ const Post = (props) => {
             <i className="post-menu-icon"></i>
           </div>
           <p><article key={props.post._id}>{props.post.message}</article></p>
-          <div classname="comment-list">
+          <div
+          className={`comment-list-container ${
+            showComments ? "expanded" : ""
+          }`}
+        >
+          <div className="comment-list">
             <h3>Comments</h3>
-            <CommentList postId={props.post._id}/>
+            {showComments && <CommentList postId={props.post._id} />}
           </div>
+        </div>
           <div className="post-actions">
             <div className="actions">
               <div className="action">
@@ -60,7 +72,12 @@ const Post = (props) => {
               </div>
               <div className="action">
                 <i className="comment-icon"></i>
-                <span>Comment</span>
+                <input 
+                type="button" 
+                value="Comment" 
+                onClick={toggleComments}
+                className="comment-button"
+                />
               </div>
               <div className="action">
                 <i className="share-icon"></i>
