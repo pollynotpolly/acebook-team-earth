@@ -7,7 +7,7 @@ const userRouter = require("./routes/users");
 const postsRouter = require("./routes/posts");
 const authenticationRouter = require("./routes/authentication");
 const tokenChecker = require("./middleware/tokenChecker");
-
+const commentRouter = require("./routes/comments");
 const app = express();
 
 // Allow requests from any client
@@ -22,6 +22,7 @@ app.use(bodyParser.json());
 app.use("/users", userRouter);
 app.use("/profiles", tokenChecker, profileRouter);
 app.use("/posts", tokenChecker, postsRouter);
+app.use("/comments", tokenChecker, commentRouter);
 app.use("/tokens", authenticationRouter);
 
 // 404 Handler
