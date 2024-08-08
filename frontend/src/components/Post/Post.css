@@ -157,6 +157,38 @@
     margin-right: 2px;
 }
 
+.like-container {
+    display: flex;
+    align-items: center;
+}
+
+.like-button {
+    background: none;
+    border: none;
+    color: #4267B2; /* Facebook blue */
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    margin-right: 8px; /* Adds space between the button and the like count */
+}
+
+.like-button svg {
+    margin-right: 5px;
+}
+
+.like-button.liked {
+    color: var(--accent-color); /* Use a different color to indicate the liked state */
+}
+
+.like-count {
+    font-size: 14px;
+    font-weight: bold;
+    color: #333; 
+}
+
+
 .comment-list-container {
     max-height: 0;
     overflow: hidden;
