@@ -64,15 +64,29 @@ const createUser = async (req, res) => {       // try-catch block... two main pa
 
 const addFriend = async (req, res) => {
     const token = generateToken(req.user_id);
+    console.log('req.body: ', req.body);
+
+    
     const user = await User.findByIdAndUpdate(req.user_id, {$push: {friends: req.body.friend_id}});
-    res.status(200).json({user: user, token: token});
+    console.log('user: ', user.name);
+  
+    const friend = await User.findByIdAndUpdate(req.body.friend_id, {$push: {friends: req.user_id}});
+    console.log('friend: ', friend.name);
+    
+    
+    res.status(200).json({user: user, friend:friend, token: token});
 
 }
 
 const removeFriend = async (req, res) => {
+    console.log('req.body: ', req.body);
     const token = generateToken(req.user_id);
     const user = await User.findByIdAndUpdate(req.user_id, {$pull: {friends: req.body.friend_id}});
-    res.status(200).json({user: user, token: token});
+    console.log('user: ', user);
+    const unfriend = await User.findByIdAndUpdate(req.body.friend_id, {$pull: {friends: req.user_id}});
+    console.log('friend: ', unfriend);
+    res.status(200).json({user: user, unfriend:unfriend, token: token});
+    console.log(user.friends, unfriend.friends);
 }
 
 const getFriends = async (req, res) => {
