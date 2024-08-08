@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Comment from "../../components/Comment/Comment";
 import { getComments } from "../../services/comments";
 import CreateCommentForm from "../../components/Input/CreateCommentForm";
+import '../CommentSection.css';
 
 const CommentList = ({postId}) => {
     const [comments, setComments] = useState([]);
