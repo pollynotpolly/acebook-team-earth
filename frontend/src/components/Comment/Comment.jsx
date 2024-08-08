@@ -14,7 +14,7 @@ const Comment = ({ comment }) => {
         <>
             <div className="comment">
                 <div className="comment-user">
-                    <img src="images/profile-40.jpg" />
+                    {/* <img src="images/profile-40.jpg" /> */}
                     <label>{comment.author}</label>
                 </div>
                 <div className="comment-content">

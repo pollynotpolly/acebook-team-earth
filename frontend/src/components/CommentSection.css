@@ -1,0 +1,46 @@
+.comment-list {
+    padding: 15px;
+    background-color: #f9f9f9; /* Light background for the comment section */
+    border-radius: 10px; /* Rounded edges for the comment section */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for a lifted effect */
+    margin-top: 20px;
+}
+
+.create-comment-form {
+    display: flex;
+    flex-direction: row; /* Align elements horizontally */
+    align-items: center; /* Align elements vertically centered */
+    gap: 10px; /* Space between the input and button */
+    width: 100%;
+}
+
+.create-comment-form textarea {
+    flex-grow: 1; /* Allow the textarea to take up all available space */
+    padding: 12px;
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 8px; /* Rounded corners for the input */
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle inner shadow for depth */
+    font-family: 'Roboto', sans-serif; /* Use a modern font */
+    font-size: 16px;
+    resize: none; /* Disable resizing */
+    min-height: 50px; /* Ensures a larger textarea by default */
+    margin: 0; /* Remove default margin */
+}
+
+.create-comment-form button {
+    padding: 12px 20px;
+    background-color: #007BFF; /* Primary blue color */
+    color: white;
+    border: none;
+    border-radius: 8px; /* Rounded corners for the button */
+    font-family: 'Roboto', sans-serif; /* Use the same modern font */
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    flex-shrink: 0; /* Prevent the button from shrinking */
+}
+
+.create-comment-form button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Add a shadow on hover */
+}

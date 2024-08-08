@@ -51,7 +51,6 @@ const Post = (props) => {
           <div classname="comment-list">
             <h3>Comments</h3>
             <CommentList postId={props.post._id}/>
-            <p> above</p>
           </div>
           <div className="post-actions">
             <div className="actions">
