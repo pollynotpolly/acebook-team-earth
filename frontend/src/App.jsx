@@ -6,9 +6,9 @@ import { SignupPage } from "./pages/Signup/SignupPage";
 import { FeedPage } from "./pages/Feed/FeedPage";
 import { MyUserProfilePage } from "./pages/UserProfile/MyUserProfilePage";
 import { Layout } from "./components/Layout";
-import {EditProfile} from "./components/User/EditProfile";
 import { UserProfilePage } from "./pages/UserProfile/StandardUserProfile";
-import {MyFriends} from "./pages//Friends/MyFriends";
+import {MyFriends} from "./components/Friend/MyFriends";
+import {RemoveFriend} from "./components/Friend/RemoveFriend";
 
 import { AllComments } from "./pages/AllCommentsTest/Allcomments";
 
@@ -39,10 +39,6 @@ const router = createBrowserRouter([
         element: <MyUserProfilePage />,
       },
       {
-        path: '/my-profile-settings',
-        element: <EditProfile  />,
-      },
-      {
         path: '/my-friends',
         element: <MyFriends />,
       },
@@ -50,6 +46,9 @@ const router = createBrowserRouter([
         path: "/profile/:id",
         element: <UserProfilePage />,
       },
+
+      { path: '/remove-friend',
+        element: <RemoveFriend />,
       {
         path: "/allcomments",
         element: <AllComments />,
