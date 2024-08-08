@@ -1,40 +1,34 @@
 import { render, screen } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
-
+import { describe, test, expect, vi } from 'vitest';
 import { HomePage } from "../../src/pages/Home/HomePage";
 
+// Mock the LoginComponent
+vi.mock("../../src/components/Utilities/Login-component", () => ({
+  LoginComponent: () => <div data-testid="login-component">Mocked Login Component</div>
+}));
+
 describe("Home Page", () => {
-  test("welcomes you to the site", () => {
-    // We need the Browser Router so that the Link elements load correctly
+  beforeEach(() => {
     render(
       <BrowserRouter>
         <HomePage />
       </BrowserRouter>
     );
-
-    const heading = screen.getByRole("heading");
-    expect(heading.textContent).toEqual("Welcome to Acebook!");
   });
 
-  test("Displays a signup link", async () => {
-    render(
-      <BrowserRouter>
-        <HomePage />
-      </BrowserRouter>
-    );
-
-    const signupLink = screen.getByText("Sign Up");
-    expect(signupLink.getAttribute("href")).toEqual("/signup");
+  test("displays the site name", () => {
+    const heading = screen.getByRole("heading", { level: 1 });
+    expect(heading.textContent).toEqual("earthbook");
   });
 
-  test("Displays a login link", async () => {
-    render(
-      <BrowserRouter>
-        <HomePage />
-      </BrowserRouter>
-    );
+  test("displays the globe emojis", () => {
+    const subheading = screen.getByRole("heading", { level: 2 });
+    expect(subheading.textContent).toEqual("🌎 🌏 🌍");
+  });
 
-    const loginLink = screen.getByText("Log In");
-    expect(loginLink.getAttribute("href")).toEqual("/login");
+  test("renders the LoginComponent", () => {
+    const loginComponent = screen.getByTestId("login-component");
+    expect(loginComponent).toBeTruthy();
   });
 });

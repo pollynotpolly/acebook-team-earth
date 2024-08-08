@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate, useOutletContext, Link } from "react-router-dom";
 import { login } from "../../services/authentication";
+import { getUserInfo } from "../../services/userInfos";
 
 export const LoginComponent = () => {
   const [email, setEmail] = useState("");
@@ -13,6 +14,10 @@ export const LoginComponent = () => {
     try {
       const token = await login(email, password);
       localStorage.setItem("token", token);
+      const user = await getUserInfo(token);
+      localStorage.setItem("id", user.user._id);
+      
+
       updateLoginStatus(); // Call this function after successful login
       navigate("/posts");
     } catch (err) {
