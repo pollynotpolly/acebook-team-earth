@@ -23,20 +23,7 @@ const Post = (props) => {
     event.preventDefault();
     navigate(`/posts/${props.post._id}/edit`);
   };
-  // const handleEdit = async (event) => {
-  //   event.preventDefault();
-    
-  //   try {
-  //     console.log("redirecting...:");
-  //     navigate(`/posts/${props.post._id}/edit`);
-  //     } catch (err) {
-  //         console.error(err);
-  //         navigate("/posts");
-  // }
-  // window.location.reload();
-  // };
   
-
   return (
     <>
   

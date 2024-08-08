@@ -81,29 +81,70 @@ export const FeedPage = () => {
         </div>
         
 
-        {/* <div className="feed-page">
-  Top container with LeftFeed, CreatePostForm, and RightFeed 
-  <div className="top-container">
-    <div className="left-feed">
-      <LeftFeed />
-    </div>
+        {/* import React from 'react';
+import styled from 'styled-components';
 
-    <div className="create-post-container">
-      <CreatePostForm refreshPosts={fetchPosts} />
-    </div>
+// Styled-components for CSS
+const FeedPage = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
 
-    <div className="right-feed">
-      <RightFeed />
-    </div>
-  </div>
+const TopContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+`;
 
-  
-  <div className="posts-container" role="feed">
-    {posts.map((post) => (
-      <Post post={post} key={post._id} />
-    ))}
-  </div>
-</div> */}
+const LeftFeedContainer = styled.div`
+  flex: 1;
+  max-width: 250px; /* Adjust as needed */
+`;
+
+const RightFeedContainer = styled.div`
+  flex: 1;
+  max-width: 250px; /* Adjust as needed */
+`;
+
+const CreatePostContainer = styled.div`
+  flex: 2;
+  margin: 0 20px; /* Space between sidebars and the center content */
+`;
+
+const PostsContainer = styled.div`
+  margin-top: 20px;
+`;
+
+const Feed = ({ posts, fetchPosts }) => {
+  return (
+    <FeedPage>
+      {/* Top container with LeftFeed, CreatePostForm, and RightFeed */}
+      <TopContainer>
+        <LeftFeedContainer>
+          <LeftFeed />
+        </LeftFeedContainer>
+
+        <CreatePostContainer>
+          <CreatePostForm refreshPosts={fetchPosts} />
+        </CreatePostContainer>
+
+        <RightFeedContainer>
+          <RightFeed />
+        </RightFeedContainer>
+      </TopContainer>
+
+      {/* Posts container below the CreatePostForm */}
+      <PostsContainer role="feed">
+        {posts.map((post) => (
+          <Post post={post} key={post._id} />
+        ))}
+      </PostsContainer>
+    </FeedPage>
+  );
+};
+
+export default Feed; */}
+
 
 
         
