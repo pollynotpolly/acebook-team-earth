@@ -46,7 +46,7 @@ export const FeedPage = () => {
   return (
     <>
       <div className="feed-page">
-        <div className="posts-container">
+       
           <div className="create-post-container">
             <CreatePostForm refreshPosts={fetchPosts} />
           </div>
@@ -64,7 +64,7 @@ export const FeedPage = () => {
             </div>
           </div>
         </div>
-      </div>
+      
     </>
   );
 }  

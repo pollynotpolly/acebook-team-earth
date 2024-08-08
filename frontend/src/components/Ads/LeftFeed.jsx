@@ -6,7 +6,7 @@ const LeftFeed = () => {
     return (
     <>
     <div className="content-grid"></div>
-     <div className="column-left desktop-tablet-only">
+    <div className="column-left desktop-tablet-only">
   <div className="fixed-area">
     <ul className="menus">
       <li className="menu-profile-item">
