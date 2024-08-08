@@ -4,10 +4,13 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 export const EditProfileForm =(props) => {
-    const [userName, setUserName] = useState(props.name);
-    const [userSurname, setUserSurname] = useState(props.surname);
-    const [userAbout, setUserAbout] = useState(props.about);
+    console.log(props.closeModal);
+
+
+    const [userAbout, setUserAbout] = useState(props.user.about);
     const navigate = useNavigate();
+
+    console.log(userAbout);
 
 
     const handleAbout = (e) => {
@@ -21,13 +24,13 @@ export const EditProfileForm =(props) => {
         e.preventDefault();
         try {
             const updatedUser = await updateUserInfo(token,{
-                name: userName,
-                surname: userSurname,
+                name: props.user.name,
+                surname: props.user.surname,
                 about: userAbout,
             });
 
             console.log(updatedUser);
-            navigate("/my-profile");
+            props.closeModal();
         } catch (error) {
             console.error(error);
         }
@@ -50,6 +53,7 @@ export const EditProfileForm =(props) => {
                     name="about"
                     value={userAbout}
                     onChange={handleAbout}
+                    placeholder={userAbout}
                 />
             </label>
             <div className="button-container">
@@ -57,7 +61,6 @@ export const EditProfileForm =(props) => {
             
             </div>
             </form>
-          
-           </>
+  </>
     )
 }
