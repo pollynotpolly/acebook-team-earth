@@ -1,5 +1,6 @@
 import "./Post.css";
 import { deletePost } from "../../services/posts";
+import { LikeButton } from "../Utilities/LikeButton"
 // import { set } from "mongoose";
 import CommentList from "../Comment/CommentList";
 import { useState } from "react";
@@ -67,8 +68,7 @@ const Post = (props) => {
           <div className="post-actions">
             <div className="actions">
               <div className="action">
-                <i className="like-icon"></i>
-                <span>👍Like</span>
+              <LikeButton />
               </div>
               <div className="action">
                 <i className="comment-icon"></i>
