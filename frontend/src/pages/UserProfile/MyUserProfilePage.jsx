@@ -9,6 +9,7 @@ import { UserProfileCard } from "../../components/User/UserProfileCard";
 import CreatePostForm from "../../components/Input/CreatePostForm";
 import "./UserProfilePage.css";
 import { FeedPage } from "../Feed/FeedPage";
+import { MyFriends } from "../../components/Friend/MyFriends";
 
 export const MyUserProfilePage = () => {
     const [userInfo, setUserInfo] = useState({});
@@ -48,6 +49,7 @@ export const MyUserProfilePage = () => {
                     <img src="src/assets/image6.jpg" alt="Image 6" />
                 </div>
                 </div>
+                <MyFriends />
             </div>
             <div className="main-content">
                 <FeedPage />
