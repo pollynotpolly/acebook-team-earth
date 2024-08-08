@@ -49,6 +49,7 @@ const router = createBrowserRouter([
 
       { path: '/remove-friend',
         element: <RemoveFriend />,
+      },
       {
         path: "/allcomments",
         element: <AllComments />,
