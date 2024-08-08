@@ -10,6 +10,8 @@ import { UserProfilePage } from "./pages/UserProfile/StandardUserProfile";
 import {MyFriends} from "./components/Friend/MyFriends";
 import {RemoveFriend} from "./components/Friend/RemoveFriend";
 
+import { AllComments } from "./pages/AllCommentsTest/Allcomments";
+
 // docs: https://reactrouter.com/en/main/start/overview
 const router = createBrowserRouter([
   {
@@ -44,8 +46,12 @@ const router = createBrowserRouter([
         path: "/profile/:id",
         element: <UserProfilePage />,
       },
+
       { path: '/remove-friend',
         element: <RemoveFriend />,
+      {
+        path: "/allcomments",
+        element: <AllComments />,
       },
     ],
     
