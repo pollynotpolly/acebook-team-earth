@@ -16,6 +16,7 @@ const getComment = async (req, res) => {
 
 const createComment = async (req, res) => {
     const token = generateToken(req.user_id);
+    console.log(req.body);
    
     post_id = req.body.postId.post_id;
 
