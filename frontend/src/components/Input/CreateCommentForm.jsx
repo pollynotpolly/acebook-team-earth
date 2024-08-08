@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { createComment } from "../../services/comments";
+import "../CommentSection.css";
 
 export const CreateCommentForm = ({ postId }) => {
     const [content, setContent] = useState("");
@@ -24,7 +25,7 @@ export const CreateCommentForm = ({ postId }) => {
                 placeholder="Add a comment..."
                 required
             />
-            <button type="submit">✉️</button>
+            <button type="submit">✉️ Submit</button>
         </form>
     );
 }
