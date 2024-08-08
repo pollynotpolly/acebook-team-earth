@@ -8,7 +8,7 @@ import { getUserInfo } from "../../services/userInfos";
 import { UserProfileCard } from "../../components/User/UserProfileCard";
 import CreatePostForm from "../../components/Input/CreatePostForm";
 import "./UserProfilePage.css";
-import { FeedPage } from "../Feed/FeedPage";
+import { UserFeed } from "../Feed/UserFeed";
 
 export const MyUserProfilePage = () => {
     const [userInfo, setUserInfo] = useState({});
@@ -50,7 +50,7 @@ export const MyUserProfilePage = () => {
                 </div>
             </div>
             <div className="main-content">
-                <FeedPage />
+                <UserFeed />
             </div>
         </div>
         

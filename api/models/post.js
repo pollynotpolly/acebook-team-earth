@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 const PostSchema = new mongoose.Schema(
   {message: {type: String, required: true},
   user: {type: String, required: true},
+  userID: {type: String, required: true},
   time: {type: String, required: true}
 });
 

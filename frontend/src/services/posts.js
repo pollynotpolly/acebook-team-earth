@@ -19,6 +19,24 @@ export const getPosts = async (token) => {
   return data;
 };
 
+export const getPostsByUser = async (token) => {
+  const requestOptions = {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  const response = await fetch(`${BACKEND_URL}/posts/myPosts`, requestOptions);
+
+  if (response.status !== 200) {
+    throw new Error("Unable to fetch posts");
+  }
+
+  const data = await response.json();
+  return data;
+};
+
 //formatting the user HTTP POST request to send it to the API:
 export const createPost = async (token, content, user) => {   
   const dateTimeString = new Date().toLocaleString("en-GB"); 

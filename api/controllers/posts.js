@@ -11,7 +11,7 @@ const getAllPosts = async (req, res) => {
 const createPost = async (req, res) => {
   console.log(req.body);
   const currentUser = await User.findById(req.user_id)
-  const post = new Post({message: req.body.content, time: req.body.time, user: currentUser.name + ' ' + currentUser.surname})
+  const post = new Post({message: req.body.content, time: req.body.time, user: currentUser.name + ' ' + currentUser.surname, userID: String(currentUser._id)})
   post
     .save()
     .then((post) => {
@@ -44,6 +44,14 @@ const deletePost = async (req, res) => {
   }
 };
 
+//GET a specific users posts
+const getPostsByUser = async (req, res) => {
+  console.log('Test')
+  const myID = await User.findById(req.user_id)
+  const usersPosts = await Post.find({userID: String(myID._id)}) //Set to my posts for now for easier testing
+  const token = generateToken(req.user_id);
+  res.status(200).json({ posts: usersPosts, token: token });
+}
 //UPDATE a post
 //const updatePost = async (req, res) => {
 // };
@@ -52,6 +60,7 @@ const PostsController = {
   getAllPosts: getAllPosts,
   createPost: createPost,
   deletePost: deletePost,
+  getPostsByUser: getPostsByUser
   //updatePost: updatePost,
 };
 

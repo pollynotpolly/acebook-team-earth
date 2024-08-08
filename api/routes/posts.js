@@ -5,6 +5,7 @@ const PostsController = require("../controllers/posts");
 
 router.get("/", PostsController.getAllPosts);
 router.post("/", PostsController.createPost);
+router.get("/myPosts", PostsController.getPostsByUser);
 
 //DELETE a post
 router.delete("/:id", PostsController.deletePost);

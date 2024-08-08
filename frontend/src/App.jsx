@@ -33,6 +33,10 @@ const router = createBrowserRouter([
         element: <FeedPage />,
       },
       {
+        path: "/my-posts",
+        element: <MyUserProfilePage />
+      },
+      {
         path: "/my-profile",
         element: <MyUserProfilePage />,
       },
