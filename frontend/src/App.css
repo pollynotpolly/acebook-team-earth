@@ -1,7 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 
-#root {
-  position: fixed;
+
+
+:root {
+  position: relative;
   margin: 0;
   padding: 0;
   top: 0;
@@ -13,6 +15,12 @@
   font-family: "Roboto", sans-serif;
 }
 
+:root body{
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", Verdana, sans-serif;
+  background: #f0f2f5;
+}
 /* Basic styles for the navbar */
 .navbar {
   background-color: #1877f2;
