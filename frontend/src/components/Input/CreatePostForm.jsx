@@ -1,22 +1,32 @@
 // Template where the user will be able to type/create & send their post to the feed
 import { useState } from "react";
 import { createPost } from "../../services/posts";
+import { useNavigate } from "react-router-dom";
 import "./CreatePostForm.css";
 
-function CreatePostForm(){
+function CreatePostForm({ refreshPosts }) {
   const [userInput, setuserInput] = useState("");
-  console.log(userInput);
+  const navigate = useNavigate();
 
   const handleUserInput = (event) => {
     setuserInput(event.target.value);
   };
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const token = localStorage.getItem("token");
-    createPost(token, userInput);
-    console.log(userInput);
-    window.location.reload(); //KR: Posts page reloads automatically after submitting 'post'w/out refreshing page.
+    try {
+      await createPost(token, userInput);
+    // window.location.reload(); //KR: Posts page reloads automatically after submitting 'post'w/out refreshing page.
+      setuserInput('');
+      if (refreshPosts) {
+        refreshPosts();
+      }
+      navigate("/posts"); // Navigate to posts page
+    } catch (err) {
+      console.error(err);
+    }
   };
+
 
   const alertFunction = () => {
     let userResponse = prompt("How are you feeling today? 😀 Happy - 👌Okay - 😞Lousy");
@@ -35,7 +45,7 @@ function CreatePostForm(){
       <form> 
       <div className="card">
           <div className="new-post-action">
-            <img src="src/assets/ProfileIcon.png" className="my-profile" />
+            <img src="src/assets/ProfileIcon.png" className="my-profile" alt="Profile Icon" />
             
             <input placeholder="What's on your mind, Earthling?" className="postinput" value={userInput} onChange={handleUserInput} />
             <button role="submit-button" className="postsubmit" type="submit" value="Submit" onClick={handleSubmit}> Post </button> 

@@ -1,8 +1,11 @@
 import "./Post.css";
-import { deletePost } from "../../services/posts";
-// import { set } from "mongoose";
+import { deletePost} from "../../services/posts";
+import { useNavigate } from "react-router-dom";
+
 
 const Post = (props) => {
+  const navigate = useNavigate();
+  
   
   const handleDelete = async (event) => {
     event.preventDefault();
@@ -16,14 +19,23 @@ const Post = (props) => {
     window.location.reload();
   };
 
-  // const handleEdit = (event) => {
+  const handleEdit = (event) => {
+    event.preventDefault();
+    navigate(`/posts/${props.post._id}/edit`);
+  };
+  // const handleEdit = async (event) => {
   //   event.preventDefault();
-  //   console.log("Edit button pressed")
-    // const token = localStorage.getItem("token");
-    // createPost(token, userInput);
-    // console.log(userInput);
-    // window.location.reload(); 
+    
+  //   try {
+  //     console.log("redirecting...:");
+  //     navigate(`/posts/${props.post._id}/edit`);
+  //     } catch (err) {
+  //         console.error(err);
+  //         navigate("/posts");
+  // }
+  // window.location.reload();
   // };
+  
 
   return (
     <>
@@ -61,8 +73,7 @@ const Post = (props) => {
                 <i className="share-icon"></i>
                 <span>Share</span>
               </div>
-              {/* <button role="update-button" className="postupdate" type="update" onClick={handleEdit} value="Update"> Edit </button> */}
-              <button role="update-button" className="postupdate" type="update" value="Update">🔧 Edit </button>
+              <button role="update-button" className="postupdate" type="update" onClick={handleEdit} value="Update">🔧 Edit </button>
               <button role="delete-button" className="postdelete" type="delete" onClick={handleDelete}value="Delete"> 🗑️ Delete </button>  
             </div>
           </div>

@@ -42,15 +42,31 @@ const deletePost = async (req, res) => {
   }
 };
 
-//UPDATE a post
-//const updatePost = async (req, res) => {
-// };
+//EDIT a post
+const editPost = async (req, res) => { 
+  console.log("___EDITING TEST______"); 
+  console.log(req.body);
+  const { id } =req.params;
+  const message = req.body.content;
+  console.log(id, message);
+  try {
+    const result = await Post.findOneAndUpdate({ _id: id}, {message: message}); // mesage or content? ALSO UPDATE the post (mongose website:https://mongoosejs.com/docs/tutorials/findoneandupdate.html)
+    if (result) {
+      res.status(200).json({ message: "Post edited successfully" });
+    } else {
+      res.status(404).json({ message: "Post not found" });
+    }
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Something went wrong" });
+  }
+};
 
 const PostsController = {
   getAllPosts: getAllPosts,
   createPost: createPost,
   deletePost: deletePost,
-  //updatePost: updatePost,
+  editPost: editPost,
 };
 
 module.exports = PostsController;

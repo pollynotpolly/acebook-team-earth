@@ -1,76 +1,114 @@
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, useEffect, useCallback } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 
-import { getPosts, createPost, deletePost } from "../../services/posts";
+import { getPosts } from "../../services/posts";
 import Post from "../../components/Post/Post";
 import CreatePostForm from "../../components/Input/CreatePostForm";
+import RightFeed from "../../components/Ads/RightFeed";
+import LeftFeed from "../../components/Ads/LeftFeed";
+
+
 
 export const FeedPage = () => {
   const [posts, setPosts] = useState([]);
   const navigate = useNavigate();
+  const location = useLocation();
 
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      getPosts(token)
-        .then((data) => {
+  // useEffect(() => {
+    const fetchPosts = useCallback(async () => {
+      const token = localStorage.getItem("token");
+      if (token) {
+        try { 
+          const data = await getPosts(token);
+        // getPosts(token)
+          // .then((data) => {
           const unorderedPosts = data.posts;  //KR: added lines 18-19 to 'reverse' the order of the posts - 
           setPosts(unorderedPosts.reverse());  // now newest shows 1st!
           localStorage.setItem("token", data.token);
-        })
-        .catch((err) => {
+        } catch(err) {
           console.error(err);
           navigate("/login");
-        });
-    }
-  }, [navigate]);
+        }
+      }
+    }, [navigate]);
+
+    useEffect(() => {
+      fetchPosts();
+    }, [fetchPosts, location.key]);
 
   const token = localStorage.getItem("token");
   if (!token) {
     navigate("/login");
-    return;
+    return null;
   }
-
-  //KR: lines 35-56
-  const handleCreatePost = async (content) => {
-    if (token) {
-      try {
-        const newPost = await createPost(token, content);
-        setPosts([newPost, ...posts]); // Prepend the new post to the existing posts
-      } catch (err) {
-        console.error(err);
-        navigate("/login");
-      }
-    } else {
-      navigate("/login");
-    }
-  };
-
-  const handleDeletePost = async (postContent) => {
-    try {
-      await deletePost(token, postContent);
-      // how do you use setPosts to update the posts and re-render the component?
-      setPosts(posts.filter(post => post.message !== postContent)); // Remove the post from the state based on content
-    } catch (err) {
-      console.error(err);
-    }
-  };
-  const dateTimeString = new Date().toLocaleString("en-GB");
 
   return (
     <>
 
 {/*Works, np - maybe better in the CreatePostForm component? */}
-      <div className="create-post-container">
-        <CreatePostForm />
-      </div>
+      
+
+
+  
+      <div className = "feed-page">
+
+        {/* container for the form */}
       <div className="posts-container">
+
+      <div className="create-post-container">
+        <CreatePostForm refreshPosts={fetchPosts} />
+      </div>
+
+      </div>
+
+
+        <div>
+        <div className ="LeftFeed">
+        <LeftFeed />
+        </div>
+
         <div className="feed" role="feed">
           {posts.map((post) => (
             <Post post={post} key={post._id} />
           ))}
         </div>
-      </div>
+
+        <div className ="LeftFeed">
+          <RightFeed />
+        </div>
+        </div>
+
+        </div>
+        
+
+        {/* <div className="feed-page">
+  Top container with LeftFeed, CreatePostForm, and RightFeed 
+  <div className="top-container">
+    <div className="left-feed">
+      <LeftFeed />
+    </div>
+
+    <div className="create-post-container">
+      <CreatePostForm refreshPosts={fetchPosts} />
+    </div>
+
+    <div className="right-feed">
+      <RightFeed />
+    </div>
+  </div>
+
+  
+  <div className="posts-container" role="feed">
+    {posts.map((post) => (
+      <Post post={post} key={post._id} />
+    ))}
+  </div>
+</div> */}
+
+
+        
+
+      
     </>
   );
 }  

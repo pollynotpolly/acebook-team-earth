@@ -1,0 +1,27 @@
+# Query: lEFTFeedPage
+# ContextLines: 1
+
+7 results - 3 files
+
+frontend/src/pages/Feed/FeedPage.jsx:
+   7  import RightFeedPage from "../../pages/Feed/RightFeedPage";
+   8: import LeftFeedPage from "../../pages/Feed/LeftFeedPage";
+   9  
+
+  53        {/* Left side  */}
+  54:       <div><LeftFeedPage /></div>
+  55  
+
+frontend/src/pages/Feed/LeftFeedPage.jsx:
+   1: const LeftFeedPage = () => {
+   2      
+
+  71  
+  72: export default LeftFeedPage;
+
+frontend/src/pages/Feed/lEFTFeedPage.jsx:
+   1: const LeftFeedPage = () => {
+   2      
+
+  71  
+  72: export default LeftFeedPage;
