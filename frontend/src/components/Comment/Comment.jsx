@@ -10,10 +10,12 @@ const Comment = ({ comment }) => {
         return null;
     }
 
+    const userFullName = comment.user_id.name + " " + comment.user_id.surname;
+
     return (
         <div className="comment">
             <div className="comment-user">
-                <label>{comment.user_id.name}</label>
+                <label>{userFullName}</label>
             </div>
             <div className="comment-content">
                 <span>{comment.content}</span>

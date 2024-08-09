@@ -6,7 +6,10 @@ const getAllComments = async (req, res) => {
     try {
         const token = generateToken(req.user_id);
         const comments = await Comment.find({})
-            .populate("user_id", "name")
+            .populate({
+                path: "user_id",
+                select: "name surname"
+            })
             .exec()
         res.status(200).json({comments: comments, token: token});
     } catch (err) {
@@ -18,7 +21,10 @@ const getComment = async (req, res) => {
     try {
         const token = generateToken(req.user_id);
         const comment = await Comment.findById(req.params.id)
-            .populate("user_id", "name")
+            .populate({
+                path: "user_id",
+                select: "name surname"
+            })
             .exec();
         if (!comment) {
             res.status(404).json({message: "Comment not found", token: token});
