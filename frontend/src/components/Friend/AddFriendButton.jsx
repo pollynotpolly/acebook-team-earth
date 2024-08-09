@@ -11,6 +11,9 @@ export const AddFriendButton = (props) => {
         try {
             const token = localStorage.getItem("token");
             await addFriend(token, props.profileId);
+
+            props.update();
+
         } catch (error) {
             console.error("Failed to add friend:", error);
             alert("Failed to add friend");

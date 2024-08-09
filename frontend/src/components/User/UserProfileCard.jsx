@@ -14,11 +14,13 @@ Modal .setAppElement('#root');
 // import Link from 'react-router-dom';
 
 
-export const UserProfileCard = ({ user }) => {
+export const UserProfileCard = ({ user,update }) => {
     const myId = localStorage.getItem('id');
     const { id } = useParams();
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [EditProfile, setEditProfile] = useState(null);
+
+
 
     const openModal = () => { 
         setModalIsOpen(true);
@@ -27,6 +29,7 @@ export const UserProfileCard = ({ user }) => {
 
     const closeModal = () => {
         setModalIsOpen(false);
+        update()
         setEditProfile(null);
     }
 
@@ -54,9 +57,9 @@ export const UserProfileCard = ({ user }) => {
         <button onClick={openModal}>Edit Profile</button>
     
     ) : isFriend ? (
-      <RemoveFriend friendId={id} />
+      <RemoveFriend update={update} friendId={id} />
     ) : (
-      <AddFriendButton profileId={id} />
+      <AddFriendButton update={update}  profileId={id} />
     )}
           <Modal 
       isOpen={modalIsOpen}
