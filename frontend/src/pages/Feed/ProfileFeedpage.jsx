@@ -5,12 +5,12 @@ import { getPosts } from "../../services/posts";
 import Post from "../../components/Post/Post";
 import CreatePostForm from "../../components/Input/CreatePostForm";
 import RightFeed from "../../components/Ads/RightFeed";
-import LeftFeed from "../../components/Ads/LeftFeed";
+// import LeftFeed from "../../components/Ads/LeftFeed";
 import "./feedpage.css"
 
 
 
-export const FeedPage = () => {
+export const ProfileFeedPage = () => {
   const [posts, setPosts] = useState([]);
   const navigate = useNavigate();
   const location = useLocation();
@@ -45,24 +45,24 @@ export const FeedPage = () => {
 
   return (
     <>
-      <div className="feed-page">
+      <div className="profile-feed-page">
        
-         
-          <div className="columns-container">
-            <div className="column left">
-              <LeftFeed />
-            </div>
-            <div className="column middle" role="feed">
-            <div className="create-post-container">
+          <div className="create-post-container">
             <CreatePostForm refreshPosts={fetchPosts} />
           </div>
+          <div className="profile-columns-container">
+            <div className="profile-feed" >
+            {/* <div className="column left"> */}
+              {/* <LeftFeed /> */}
+            {/* </div> */}
+
+            <div className="profile-column middle" role="feed">
               {posts.map((post) => (
                 <Post post={post} key={post._id} />
               ))}
             </div>
-            <div className="column right">
-              <RightFeed />
             </div>
+            
           </div>
         </div>
       

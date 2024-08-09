@@ -8,7 +8,7 @@ import { getUserInfo } from "../../services/userInfos";
 import { UserProfileCard } from "../../components/User/UserProfileCard";
 import CreatePostForm from "../../components/Input/CreatePostForm";
 import "./UserProfilePage.css";
-import { FeedPage } from "../Feed/FeedPage";
+import {ProfileFeedPage} from "../Feed/ProfileFeedpage"
 import { MyFriends } from "../../components/Friend/MyFriends";
 
 export const MyUserProfilePage = () => {
@@ -52,7 +52,7 @@ export const MyUserProfilePage = () => {
                 <MyFriends />
             </div>
             <div className="main-content">
-                <FeedPage />
+                <ProfileFeedPage />
             </div>
         </div>
         

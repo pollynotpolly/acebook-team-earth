@@ -6,6 +6,7 @@ import './Comment.css';
 import { useState, useEffect, navigate } from "react";
 
 const Comment = ({ comment }) => {
+    console.log(comment);
     if (!comment) {
         return null;
     }

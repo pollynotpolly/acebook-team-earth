@@ -77,4 +77,15 @@
     align-items: center;
     margin-right: 12px;
   }
-  
+  .adverts-games-containers .additional-content-container {
+    width: 100%;
+    height: 1000px; /* Fixed height for the additional content container */
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Enable vertical scrolling */
+}

@@ -4,6 +4,7 @@ import { LikeButton } from "../Utilities/LikeButton"
 import { useNavigate } from "react-router-dom";
 import CommentList from "../Comment/CommentList";
 import { useState } from "react";
+import image from "../../assets/image1.jpg";
 
 
 const Post = (props) => {
@@ -39,7 +40,7 @@ const Post = (props) => {
   <div className="card post">
           <div className="post-header">
             <div className="post-author-info">
-              <img src="images/page-thumb-1.png" />
+              <img src={image}/>
               <div>              
                 <div>
 

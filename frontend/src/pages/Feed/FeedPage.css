@@ -27,10 +27,35 @@
   .left, .right {
     width: 25%;
   }
-  
-  .middle {
-    width: 50%;
-  }
+    
+    .middle {
+      width: 70%;
+    }
+
+    .profile-columns-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 1290px;
+      margin-left: 10px;
+      padding: 20px;  
+    }
+
+
+    
+    .profile-feed {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      width: 100%;
+      justify-content: space-between;
+    }
+    
+    .profile-feed .card.post {
+     width: 100%;
+    }
+
+
   
   @media (max-width: 768px) {
     .columns-container {
