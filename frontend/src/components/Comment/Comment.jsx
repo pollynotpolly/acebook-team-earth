@@ -11,17 +11,14 @@ const Comment = ({ comment }) => {
     }
 
     return (
-        <>
-            <div className="comment">
-                <div className="comment-user">
-                    {/* <img src="images/profile-40.jpg" /> */}
-                    <label>{comment.author}</label>
-                </div>
-                <div className="comment-content">
-                    <span>{comment.content}</span>
-                </div>
+        <div className="comment">
+            <div className="comment-user">
+                <label>{comment.user_id.name}</label>
             </div>
-        </>
+            <div className="comment-content">
+                <span>{comment.content}</span>
+            </div>
+        </div>
     );
 }
 
