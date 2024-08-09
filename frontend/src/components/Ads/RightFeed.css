@@ -1,0 +1,172 @@
+/* Right Columns */
+.column-right {
+    background: pink; 
+  }
+  
+  .content-grid .column-right .fixed-area {
+    background: blue; 
+    position: sticky;
+    top: var(--header-height);
+    right: 0;
+    overflow-y: auto; /* Changed from scroll to auto */
+    height: 100vh;
+  }
+  
+  .content-grid .column-right .sponsored .title {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--secondary-text);
+    padding: 20px 16px 4px 16px;
+    display: block;
+  }
+  
+  .content-grid .column-right .sponsored .sponsor-list {
+    padding: 8px 0;
+  }
+  
+  .content-grid .column-right .sponsored .sponsor-item {
+    display: flex;
+    align-items: center;
+    padding: 8px 16px;
+  }
+  
+  .content-grid .column-right .sponsored .sponsor-item img {
+    width: 100px;
+    border-radius: 8px;
+  }
+  
+  .content-grid .column-right .sponsored .sponsor-info {
+    padding-left: 12px;
+  }
+  
+  .content-grid .column-right .sponsored .sponsor-info span {
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 20px;
+  }
+  
+  .content-grid .column-right .sponsored .sponsor-info div {
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 16px;
+    color: var(--secondary-text);
+  }
+  
+  .content-grid .column-right .separator {
+    border-bottom: 1px solid var(--divider);
+    margin: 0 16px;
+  }
+  
+  .content-grid .column-right .birthdays .title {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--secondary-text);
+    padding: 20px 16px 4px 16px;
+    display: block;
+  }
+  
+  .content-grid .column-right .birthdays {
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 20px;
+  }
+  
+  .content-grid .column-right .birthdays strong {
+    font-weight: 600;
+  }
+  
+  .content-grid .column-right .birthdays .info {
+    display: flex;
+    align-items: center;
+    padding: 16px;
+  }
+  
+  .content-grid .column-right .birthdays .info i {
+    margin-right: 12px;
+  }
+  
+  .content-grid .column-right .contacts .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 16px 4px 16px;
+  }
+  
+  .content-grid .column-right .contacts .title {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--secondary-text);
+  }
+  
+  .content-grid .column-right .contacts .actions {
+    display: flex;
+    align-items: center;
+  }
+  
+  .content-grid .column-right .contacts .actions i {
+    margin-left: 24px;
+  }
+  
+  .content-grid .column-right .contacts-list {
+    padding: 8px 16px;
+    opacity: 0.5;
+  }
+  
+  .column-right .contacts-item {
+    display: flex;
+    align-items: center;
+    padding: 8px 0;
+  }
+  
+  .column-right .contacts-item img {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%; /* Changed from 1000px to 50% for consistency */
+    margin-right: 12px;
+  }
+  
+  .column-right .contacts-item span {
+    font-size: 15px;
+    font-weight: 500;
+  }
+  
+  .adverts-games-containers {
+    width: 100%;
+    height: 1000px; /* Fixed height for the additional content container */
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Enable vertical scrolling */
+} 
+
+.adverts-games-containers {
+  width: 100%;
+  height: 1000px; /* Fixed height for the additional content container */
+  padding: 15px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Enable vertical scrolling */
+}
+
+.image-grid, .adverts-games-containers  {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  width: 100%; /* Ensure the grid takes the full width */
+}
+
+.image-grid img, .adverts-games-containers {
+  flex: 0 0 calc(50% - 10px); /* Adjust for desired number of columns */
+  width: 150px; 
+  height: 150px; 
+  object-fit: cover;
+  object-position: center;
+}

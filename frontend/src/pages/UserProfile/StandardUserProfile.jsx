@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 import { getUserInfoById } from "../../services/userInfos";
 import { UserProfileCard } from "../../components/User/UserProfileCard";
-import {FeedPage} from "../Feed/FeedPage";
+import {ProfileFeedPage} from "..//Feed/ProfileFeedpage";
 import { useParams } from "react-router-dom";
 import { MyFriends } from "../../components/Friend/MyFriends";
 
@@ -54,8 +54,8 @@ export const UserProfilePage = () => {
                 <MyFriends />
             </div>
 
-            <div className="feed-container">
-                <FeedPage />
+            <div className="main-content">
+                <ProfileFeedPage />
             </div>
         </div>
     )

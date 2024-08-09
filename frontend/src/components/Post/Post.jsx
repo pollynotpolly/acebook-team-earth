@@ -1,12 +1,16 @@
 import "./Post.css";
-import { deletePost } from "../../services/posts";
+import { deletePost} from "../../services/posts";
 import { LikeButton } from "../Utilities/LikeButton"
-// import { set } from "mongoose";
+import { useNavigate } from "react-router-dom";
 import CommentList from "../Comment/CommentList";
 import { useState } from "react";
+import image from "../../assets/image1.jpg";
+
 
 const Post = (props) => {
   const [showComments, setShowComments] = useState(false);
+  const navigate = useNavigate();
+  
   
   const handleDelete = async (event) => {
     event.preventDefault();
@@ -20,26 +24,23 @@ const Post = (props) => {
     window.location.reload();
   };
 
+
   const toggleComments = () => {
     setShowComments(!showComments);
   }
 
-  // const handleEdit = (event) => {
-  //   event.preventDefault();
-  //   console.log("Edit button pressed")
-    // const token = localStorage.getItem("token");
-    // createPost(token, userInput);
-    // console.log(userInput);
-    // window.location.reload(); 
-  // };
-
+  const handleEdit = (event) => {
+    event.preventDefault();
+    navigate(`/posts/${props.post._id}/edit`);
+  };
+  
   return (
     <>
   
   <div className="card post">
           <div className="post-header">
             <div className="post-author-info">
-              <img src="images/page-thumb-1.png" />
+              <img src={image}/>
               <div>              
                 <div>
 
@@ -85,7 +86,7 @@ const Post = (props) => {
                 <i className="share-icon"></i>
                 <span>Share</span>
               </div>
-              {/* <button role="update-button" className="postupdate" type="update" onClick={handleEdit} value="Update"> Edit </button> */}
+              <button role="update-button" className="postupdate" type="update" onClick={handleEdit} value="Update">🔧 Edit </button>
               <button role="delete-button" className="postdelete" type="delete" onClick={handleDelete}value="Delete"> 🗑️ Delete </button>  
             </div>
           </div>

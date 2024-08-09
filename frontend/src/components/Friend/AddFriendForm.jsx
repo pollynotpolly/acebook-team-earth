@@ -13,7 +13,7 @@ export const AddFriendForm = () => {
             const friend_id = e.target.friend_id.value;
             console.log('friend_id: ', friend_id);
             await addFriend(token, friend_id);
-            alert('Friend added successfully');
+            
         } catch (error) {
             console.error('Failed to add friend:', error);
             alert('Failed to add friend');

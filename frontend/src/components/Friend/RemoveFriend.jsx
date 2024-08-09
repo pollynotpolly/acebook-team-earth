@@ -9,7 +9,7 @@ export const RemoveFriend = (props) => {
             const token = localStorage.getItem("token");
             console.log("I'm authorised with this token: ", token);
             await removeFriend(token, props.friendId);
-            alert("Friend removed successfully");
+         
         } catch (error) {
             console.error("Failed to remove friend:", error);
             alert("Failed to remove friend");

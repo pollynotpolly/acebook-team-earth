@@ -71,4 +71,32 @@ export const deletePost = async (token, id) => {
 };
   
 
+//EDIT/UPDATE post - formatting the user HTTP PATCH request to send it to the API:
+export const editPost = async (token, content, id) => {   
+  const dateTimeString = new Date().toLocaleString("en-GB"); 
+  console.log("date time string " + dateTimeString);
+  const payload = {
+    content: content,
+    time:  dateTimeString // depends if we want to patch and change the time or add another field called 'edited time'? OR JUST NOT INCLUDE THE TIME SO THAT THE TIME DOESN'T CHANGE?
+  };
+
+  // const response = await fetch(`${BACKEND_URL}/posts/${id}`, editedPost); // DO WE DO SLASH EDIT OR JUST /POST/ID when FETCHING LINK?
+
+  // const editedPost = {
+  const response = await fetch(`${BACKEND_URL}/posts/${id}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(payload),
+  });
+  
+  if (response.status !== 200) {
+    throw new Error("Unable to create posts");
+  }
+
+  const data = await response.json();
+  return data;
+};
 

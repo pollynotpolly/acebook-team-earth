@@ -1,14 +1,14 @@
 // This is the profile page, where the user's profile card is displayed and the users posts are displayed below.
 
 
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { getUserInfo } from "../../services/userInfos";
 import { UserProfileCard } from "../../components/User/UserProfileCard";
 import CreatePostForm from "../../components/Input/CreatePostForm";
 import "./UserProfilePage.css";
-import { FeedPage } from "../Feed/FeedPage";
+import {ProfileFeedPage} from "../Feed/ProfileFeedpage"
 import { MyFriends } from "../../components/Friend/MyFriends";
 
 export const MyUserProfilePage = () => {
@@ -56,7 +56,7 @@ export const MyUserProfilePage = () => {
                 <MyFriends />
             </div>
             <div className="main-content">
-                <FeedPage />
+                <ProfileFeedPage />
             </div>
         </div>
         

@@ -11,6 +11,8 @@ import {MyFriends} from "./components/Friend/MyFriends";
 import {RemoveFriend} from "./components/Friend/RemoveFriend";
 
 import { AllComments } from "./pages/AllCommentsTest/Allcomments";
+import  EditPostForm  from "./components/Edit/EditPostForm";
+
 
 // docs: https://reactrouter.com/en/main/start/overview
 const router = createBrowserRouter([
@@ -33,6 +35,10 @@ const router = createBrowserRouter([
       {
         path: "/posts",
         element: <FeedPage />,
+      },
+      {
+        path: "posts/:id/edit",
+        element: <EditPostForm />,
       },
       {
         path: "/my-profile",
