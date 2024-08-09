@@ -10,18 +10,17 @@ const Comment = ({ comment }) => {
         return null;
     }
 
+    const userFullName = comment.user_id.name + " " + comment.user_id.surname;
+
     return (
-        <>
-            <div className="comment">
-                <div className="comment-user">
-                    {/* <img src="images/profile-40.jpg" /> */}
-                    <label>{comment.author}</label>
-                </div>
-                <div className="comment-content">
-                    <span>{comment.content}</span>
-                </div>
+        <div className="comment">
+            <div className="comment-user">
+                <label>{userFullName}</label>
             </div>
-        </>
+            <div className="comment-content">
+                <span>{comment.content}</span>
+            </div>
+        </div>
     );
 }
 

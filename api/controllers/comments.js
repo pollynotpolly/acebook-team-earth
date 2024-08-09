@@ -1,17 +1,39 @@
 const Comment = require("../models/comments");
+const User = require("../models/user");
 const {generateToken} = require("../lib/token");
 
 const getAllComments = async (req, res) => {
-    const token = generateToken(req.user_id);
-    const comments = await Comment.find({});
-    res.status(200).json({comments: comments, token: token});
-}
+    try {
+        const token = generateToken(req.user_id);
+        const comments = await Comment.find({})
+            .populate({
+                path: "user_id",
+                select: "name surname"
+            })
+            .exec()
+        res.status(200).json({comments: comments, token: token});
+    } catch (err) {
+        res.status(500).json({message: "Error fetching comments"});
+    }
+};
 
 const getComment = async (req, res) => {
-    const token = generateToken(req.user_id);
-    const comment = await Comment.findById(req.comment_id);
-    res.status(200).json({comment: comment, token: token});
-
+    try {
+        const token = generateToken(req.user_id);
+        const comment = await Comment.findById(req.params.id)
+            .populate({
+                path: "user_id",
+                select: "name surname"
+            })
+            .exec();
+        if (!comment) {
+            res.status(404).json({message: "Comment not found", token: token});
+            return;
+        }
+        res.status(200).json({comment: comment, token: token});
+    } catch (err) {
+        res.status(500).json({message: "Error fetching comment"});
+    }
 }
 
 const createComment = async (req, res) => {
