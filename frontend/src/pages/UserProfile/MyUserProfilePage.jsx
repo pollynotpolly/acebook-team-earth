@@ -15,30 +15,34 @@ export const MyUserProfilePage = () => {
     const [userInfo, setUserInfo] = useState({});
     const navigate = useNavigate();
     
-    useEffect(() => {
+    const fetchProfileInfo=()=>{
         const token = localStorage.getItem("token");
         const fetchUser = async () => {
-            console.log("fetching user");
+            
         try {
             const userInfo = await getUserInfo(token);
-            console.log("userInfo: ", userInfo.user);
             setUserInfo(userInfo.user);
         } catch (err) {
             console.error(err);
             navigate("/404");
         }
         };
-    
         fetchUser();
-    }, [navigate]);
-    
+
+    }
+
+    useEffect(() => {
+        fetchProfileInfo();
+    }
+    , [navigate]);
+
     return (
         <div className="profile-and-feed-wrapper">
             <div className="profile-section">
 {/*                 Should work np, maybe better to move the divs to profile card? */}
-                <div className="user-profile-card">
-                    <UserProfileCard user={userInfo} />
-                </div>
+       
+                    <UserProfileCard user={userInfo} update={fetchProfileInfo} />
+            
                 <div className="additional-content-container"><h2>my photos</h2>
                 <div className="image-grid">
                     <img src="src/assets/image1.jpg" alt="Image 1" />

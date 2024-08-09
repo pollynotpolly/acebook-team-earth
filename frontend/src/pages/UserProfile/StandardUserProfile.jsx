@@ -15,32 +15,32 @@ export const UserProfilePage = () => {
     const navigate = useNavigate();
     const { id } = useParams();
 
-    useEffect(() => {
+    const fetchProfileInfo=()=>{
         const token = localStorage.getItem("token");
         const fetchUser = async () => {
-            console.log("fetching user");
-
-            
         try {
-            const  userInfo = await getUserInfoById(token, id);
-            console.log("userInfo: ", userInfo.user);
+            const userInfo = await getUserInfoById(token,id);
             setUserInfo(userInfo.user);
         } catch (err) {
             console.error(err);
             navigate("/404");
         }
         };
-    
         fetchUser();
+
+    }
+
+    useEffect(() => {
+        fetchProfileInfo();
     }
     , [navigate]);
 
     return (
         <div className="profile-and-feed-wrapper">
             <div className="profile-section">
-                <div className="user-profile-card">
-                    <UserProfileCard user={userInfo} />
-                </div>
+              
+                    <UserProfileCard user={userInfo} update={fetchProfileInfo}/>
+  
                 <div className="additional-content-container"><h2>my photos</h2>
                 <div className="image-grid">
                     <img src="src/assets/image1.jpg" alt="Image 1" />

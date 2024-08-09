@@ -7,20 +7,24 @@ export const MyFriends = () => {
     const [friends, setFriends] = useState([]);
     const [loading, setLoading] = useState(true);
 
+
+    const fetchFriends = async () => {
+        try {
+            const token = localStorage.getItem('token');
+            const data = await getFriends(token);
+            setFriends(data.friends);
+        } catch (error) {
+            console.error('Failed to fetch friends:', error);
+        } finally {
+            setLoading(false);
+        }
+    };
+    
+
     useEffect(() => {
-        const fetchFriends = async () => {
-            try {
-                const token = localStorage.getItem('token');
-                const data = await getFriends(token);
-                setFriends(data.friends);
-            } catch (error) {
-                console.error('Failed to fetch friends:', error);
-            } finally {
-                setLoading(false);
-            }
-        };
         fetchFriends();
-    }, []);
+    }
+    , []);
 
     return (
         <>
