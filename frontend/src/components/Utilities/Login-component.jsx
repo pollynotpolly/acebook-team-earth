@@ -61,7 +61,7 @@ export const LoginComponent = () => {
             onChange={handlePasswordChange}
           />
           <div className="login">
-            <input role="submit-button" id="submit" type="submit" value="Login" onClick={successfulLoginMessage} />
+            <input role="submit-button" id="submit" type="submit" value="Login"  />
           </div>
           <div className="signup">
             <Link to="/signup">Create new account</Link>

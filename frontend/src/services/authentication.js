@@ -50,9 +50,10 @@ export const signup = async (name, surname, email, password) => {
 
   // docs: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/201
   if (response.status === 201) {
-    alert("Your account was successfully created")
+    
     return;
   } else {
+    alert("Please check console.")
     throw new Error(
       `Received status ${response.status} when signing up. Expected 201`
     );

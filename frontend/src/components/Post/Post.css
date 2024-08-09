@@ -231,3 +231,8 @@
 .action .comment-button i {
     margin-right: 8px;
 }
+
+.card.post article {
+    margin: 20px;
+    padding: 0;
+}
