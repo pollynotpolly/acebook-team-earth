@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { getFriends } from '../../services/userInfos';
-import { FriendCard } from '../../components/Friend/FriendCard';
-import { AddFriendForm } from "../../components/Friend/AddFriendForm";
+import { FriendCard } from './FriendCard';
+import { AddFriendForm } from "./AddFriendForm";
 
 export const MyFriends = () => {
     const [friends, setFriends] = useState([]);
@@ -24,18 +24,27 @@ export const MyFriends = () => {
 
     return (
         <>
-            <div className='my-friends'>
+            <div className='my-friends-container'>
                 <h1>My Friends</h1>
+                
+                
                 {loading ? (
                     <p>Loading friends...</p>
                 ) : friends.length === 0 ? (
                     <p>You have no friends yet.</p>
                 ) : (
-                    friends.map((friend) => (
-                        <FriendCard friend={friend} key={friend.id} />
-                    ))
+                    <>
+                    <p>You have {friends.length} friends: </p>
+                    <div className='friend-card-grid'>
+                    {friends.map((friends) => (
+                        <FriendCard friend={friends} key={friends.id} />
+                    ))}
+                    </div>
+                    </>
                 )}
-            </div>
+                    
+                </div>
+                
             <AddFriendForm />
         </>
     );

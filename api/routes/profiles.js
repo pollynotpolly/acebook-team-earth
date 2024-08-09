@@ -17,7 +17,7 @@ router.delete("/", userController.deleteUser)
 //Add friend to user
 router.post("/friends", userController.addFriend);
 //Remove friend from user
-router.delete("/friends", userController.removeFriend);
+router.put("/friends/:id", userController.removeFriend);
 
 //Get friends
 router.get("/friends", userController.getFriends);

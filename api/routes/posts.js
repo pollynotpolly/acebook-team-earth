@@ -6,6 +6,9 @@ const PostsController = require("../controllers/posts");
 router.get("/", PostsController.getAllPosts);
 router.post("/", PostsController.createPost); //localchost.com/posts
 
+const commentController = require("../controllers/comments");
+
+
 //DELETE a post
 router.delete("/:id", PostsController.deletePost); //localchost.com/post/1 
 
